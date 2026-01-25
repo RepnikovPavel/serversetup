@@ -7,3 +7,4 @@ source ./venv/bin/activate
 pip install nvitop --verbose --verbose
 deactivate
 sudo sysctl -w vm.max_map_count=262144
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
