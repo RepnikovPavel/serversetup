@@ -1,0 +1,1 @@
+nix profile install nixpkgs#llama-cpp --extra-experimental-features nix-command --extra-experimental-features flakes
