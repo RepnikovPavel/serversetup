@@ -1,0 +1,1 @@
+sudo ufw allow 5201/tcp
