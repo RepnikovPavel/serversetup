@@ -2,7 +2,7 @@ services:
   jupyter:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/DockerFile
     image: jupyter-gpu-local:test
     container_name: ${CONTAINER_NAME}
     ports:
