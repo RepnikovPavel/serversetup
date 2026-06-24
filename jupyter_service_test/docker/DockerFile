@@ -1,0 +1,39 @@
+FROM nvcr.io/nvidia/tensorrt-llm/release:1.3.0rc19
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    JUPYTER_TOKEN="" \
+    JUPYTER_PORT=8888
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tini git curl ca-certificates bash && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir \
+    jupyterlab \
+    ipykernel \
+    numpy \
+    numba \
+    matplotlib \
+    scipy \
+    pandas \
+    scikit-learn \
+    tqdm \
+    lightgbm \
+    exchange_calendars \
+    wbdata \
+    optuna \
+    plotly \
+    "nbformat>=4.2.0" \
+    tabulate \
+    shap \
+    seaborn \
+    pyarrow \
+    polars
+
+WORKDIR /workspace
+EXPOSE 8888
+ENTRYPOINT ["tini", "--"]
+CMD ["bash", "-lc", "jupyter lab --ip=0.0.0.0 --port=${JUPYTER_PORT} --no-browser --allow-root --ServerApp.token='' --ServerApp.password=''"]

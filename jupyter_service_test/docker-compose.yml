@@ -1,0 +1,22 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: jupyter-gpu-local:test
+    container_name: ${CONTAINER_NAME}
+    ports:
+      - "64001:8888"
+    volumes:
+      # 1. Наше захардкоженное рабочее пространство
+      - ${WORKSPACE}:/workspace
+      
+      # 2. Проброс конкретных дисков (системный диск сюда не попадает)
+      - /mnt/hdd1:/mnt/hdd1
+      # - /mnt/hdd2:/mnt/hdd2
+      # - /mnt/nvme2:/mnt/nvme2
+      
+    working_dir: /workspace
+    shm_size: "64gb"
+    gpus: all
+    restart: unless-stopped
