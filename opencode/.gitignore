@@ -1,0 +1,23 @@
+# --- python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# --- runtime logs & state (regenerated each run) ---
+*.log
+install.state.tsv
+
+# --- editor / OS ---
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# --- local workspace data from plugins/tools ---
+.opencode/
+.goopspec/
+.swarm/

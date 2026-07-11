@@ -1,0 +1,2162 @@
+[
+  {
+    "productId": "agent-memory",
+    "displayName": "Agent Memory",
+    "repoUrl": "https://github.com/joshuadavidthomas/opencode-agent-memory",
+    "tagline": "Letta-inspired memory",
+    "description": "Gives the agent persistent, self-editable memory blocks inspired by Letta agents.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-agent-memory",
+      "github:joshuadavidthomas/opencode-agent-memory"
+    ]
+  },
+  {
+    "productId": "agent-skills-jdt",
+    "displayName": "Agent Skills (JDT)",
+    "repoUrl": "https://github.com/joshuadavidthomas/opencode-agent-skills",
+    "tagline": "Dynamic skills loader",
+    "description": "Dynamic skills loader that discovers skills from project, user, and plugin directories.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-agent-skills",
+      "github:joshuadavidthomas/opencode-agent-skills"
+    ]
+  },
+  {
+    "productId": "antigravity-auth",
+    "displayName": "Antigravity Auth",
+    "repoUrl": "https://github.com/NoeFabris/opencode-antigravity-auth",
+    "tagline": "Google Antigravity models",
+    "description": "Use Gemini and Anthropic models for free via Google Antigravity IDE authentication.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-antigravity-auth",
+      "github:NoeFabris/opencode-antigravity-auth"
+    ]
+  },
+  {
+    "productId": "antigravity-multi-auth",
+    "displayName": "Antigravity Multi-Auth",
+    "repoUrl": "https://github.com/theblazehen/opencode-antigravity-multi-auth",
+    "tagline": "Multiple Google accounts",
+    "description": "Fork of opencode-antigravity-auth that allows using multiple Google accounts with automatic rotation when rate limited.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-antigravity-multi-auth",
+      "github:theblazehen/opencode-antigravity-multi-auth"
+    ]
+  },
+  {
+    "productId": "autotitle",
+    "displayName": "Autotitle",
+    "repoUrl": "https://github.com/pawelma/opencode-autotitle",
+    "tagline": "AI-powered automatic session naming",
+    "description": "Two-phase session titling - instant keyword titles on user message, refined AI titles after response. Auto-selects cheapest model (flash/haiku/fast), respects custom titles, zero configuration needed.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-autotitle",
+      "github:pawelma/opencode-autotitle"
+    ]
+  },
+  {
+    "productId": "background",
+    "displayName": "Background",
+    "repoUrl": "https://github.com/zenobi-us/opencode-background",
+    "tagline": "Background process management",
+    "description": "Background process management plugin for opencode.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-background",
+      "github:zenobi-us/opencode-background"
+    ]
+  },
+  {
+    "productId": "background-agents",
+    "displayName": "Background Agents",
+    "repoUrl": "https://github.com/kdcokenny/opencode-background-agents",
+    "tagline": "Async agent delegation",
+    "description": "Claude Code-style background agents with async delegation and context persistence.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-background-agents",
+      "github:kdcokenny/opencode-background-agents"
+    ]
+  },
+  {
+    "productId": "beads-plugin",
+    "displayName": "Beads Plugin",
+    "repoUrl": "https://github.com/joshuadavidthomas/opencode-beads",
+    "tagline": "Beads issue tracker integration",
+    "description": "Integration for Steve Yegge's beads issue tracker with /bd-* commands.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-beads",
+      "github:joshuadavidthomas/opencode-beads"
+    ]
+  },
+  {
+    "productId": "brhp",
+    "displayName": "BRHP",
+    "repoUrl": "https://github.com/ZanzyTHEbar/brhp",
+    "tagline": "Persistent planning state",
+    "description": "Structured, persistent planning for OpenCode with local session state, /brhp commands, bounded planner history, and a TUI sidebar.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "brhp",
+      "github:ZanzyTHEbar/brhp"
+    ]
+  },
+  {
+    "productId": "cc-safety-net",
+    "displayName": "CC Safety Net",
+    "repoUrl": "https://github.com/kenryu42/claude-code-safety-net",
+    "tagline": "Safety net catching destructive commands",
+    "description": "A Claude Code plugin that acts as a safety net, catching destructive git and filesystem commands before they execute.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "claude-code-safety-net",
+      "github:kenryu42/claude-code-safety-net"
+    ]
+  },
+  {
+    "productId": "cli-subagent-output",
+    "displayName": "Subagent Reporter",
+    "repoUrl": "https://github.com/raisbecka/opencode-subagent-output",
+    "tagline": "See exactly what your subagents are up to (in the terminal) when invoked during an `opencode run _____` session.",
+    "description": "When opencode run <prompt> is invoked normally, the actions of the primary agent are visible in the terminal, but subagent actions are not. This makes it difficult to follow progress on the prompt, and makes it very difficult to use `opencode run` as part of an unattended process or script. This plugin pipes subagent actions/events directly to stdout, prefixes them with the subagents name, and enumerates subagents when run in parallel for easy identification. This allows the user to follow along in realtime when subagents are running, and effectively trace execution at a later time.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-subagent-output",
+      "github:raisbecka/opencode-subagent-output"
+    ]
+  },
+  {
+    "productId": "command-inject",
+    "displayName": "Command Inject",
+    "repoUrl": "https://github.com/shihyuho/opencode-command-inject",
+    "tagline": "Auto-inject project commands into OpenCode",
+    "description": "Automatically discovers and injects Makefile targets, npm/pnpm/yarn/bun scripts, and local skills at startup. Type / to see and run all project commands.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-command-inject",
+      "github:shihyuho/opencode-command-inject"
+    ]
+  },
+  {
+    "productId": "context-analysis",
+    "displayName": "Context Analysis",
+    "repoUrl": "https://github.com/IgorWarzocha/Opencode-Context-Analysis-Plugin",
+    "tagline": "Token usage analysis",
+    "description": "An opencode plugin that provides detailed token usage analysis for your AI sessions.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-context-analysis-plugin",
+      "github:IgorWarzocha/Opencode-Context-Analysis-Plugin"
+    ]
+  },
+  {
+    "productId": "crawlberg",
+    "displayName": "Crawlberg",
+    "repoUrl": "https://github.com/xberg-io/plugins",
+    "tagline": "Web crawling and scraping tools for opencode",
+    "description": "OpenCode plugin exposing crawlberg CLI tools for scraping pages, crawling sites, and mapping URLs to JSON or Markdown.",
+    "tags": [
+      "crawling",
+      "scraping",
+      "markdown",
+      "cli"
+    ],
+    "scope": [
+      "global",
+      "project"
+    ],
+    "candidates": [
+      "@xberg-io/opencode-xberg",
+      "plugins",
+      "github:xberg-io/plugins"
+    ]
+  },
+  {
+    "productId": "crewbee",
+    "displayName": "CrewBee",
+    "repoUrl": "https://github.com/CrewBeeLab/CrewBee",
+    "tagline": "Task-specific Agent Teams for OpenCode",
+    "description": "CrewBee is an independent Agent Team framework for OpenCode. It lets users define reusable task/project-specific Agent Teams, project them into OpenCode agents, and switch between single-agent execution and multi-agent collaboration based on task complexity. It also includes built-in Team templates such as a Coding Team with review flow and completion criteria.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "crewbee",
+      "github:CrewBeeLab/CrewBee"
+    ]
+  },
+  {
+    "productId": "devcontainers",
+    "displayName": "Devcontainers",
+    "repoUrl": "https://github.com/athal7/opencode-devcontainers",
+    "tagline": "Multi-branch devcontainers",
+    "description": "Plugin for running multiple devcontainer instances with auto-assigned ports and branch-based isolation.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-devcontainers",
+      "github:athal7/opencode-devcontainers"
+    ]
+  },
+  {
+    "productId": "direnv",
+    "displayName": "Direnv",
+    "repoUrl": "https://github.com/simonwjackson/opencode-direnv",
+    "tagline": "Load direnv variables",
+    "description": "Automatically loads direnv environment variables at session start. Perfect for Nix flakes.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-direnv",
+      "github:simonwjackson/opencode-direnv"
+    ]
+  },
+  {
+    "productId": "dodo-payments",
+    "displayName": "Dodo Payments",
+    "repoUrl": "https://github.com/dodopayments/dodo-agent-plugin",
+    "tagline": "Payments, subscriptions, webhooks, and billing for OpenCode agents",
+    "description": "Official Dodo Payments plugin for OpenCode (also Claude Code, Codex, Cursor). Bundles eight integration skills (checkout, subscriptions, webhooks, usage-based billing, credits, license keys, BillingSDK, best practices) plus two MCP servers — a live API server with browser OAuth and a documentation search server. Distributed via npm as @dodopayments/opencode-plugin.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "dodo-agent-plugin",
+      "github:dodopayments/dodo-agent-plugin"
+    ]
+  },
+  {
+    "productId": "dynamic-context-pruning",
+    "displayName": "Dynamic Context Pruning",
+    "repoUrl": "https://github.com/Tarquinen/opencode-dynamic-context-pruning",
+    "tagline": "Optimize token usage",
+    "description": "Plugin that optimises token usage by pruning obsolete tool outputs from conversation context.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-dynamic-context-pruning",
+      "github:Tarquinen/opencode-dynamic-context-pruning"
+    ]
+  },
+  {
+    "productId": "ejentum-mcp",
+    "displayName": "Ejentum",
+    "repoUrl": "https://github.com/ejentum/ejentum-mcp",
+    "tagline": "MCP server with reasoning, code, anti-deception, and memory tools for AI agents",
+    "description": "MCP server with four tools (harness_reasoning, harness_code, harness_anti_deception, harness_memory) that AI agents can call on demand. Each tool returns a structured prompt the calling agent ingests before generating.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "ejentum-mcp",
+      "github:ejentum/ejentum-mcp"
+    ]
+  },
+  {
+    "productId": "envsitter-guard",
+    "displayName": "Envsitter Guard",
+    "repoUrl": "https://github.com/boxpositron/envsitter-guard",
+    "tagline": "Prevent .env leaks",
+    "description": "OpenCode plugin that prevents agents/tools from reading or editing sensitive .env* files, while still allowing safe inspection via EnvSitter (keys + deterministic fingerprints; never values).",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "envsitter-guard",
+      "github:boxpositron/envsitter-guard"
+    ]
+  },
+  {
+    "productId": "flowdeck",
+    "displayName": "FlowDeck",
+    "repoUrl": "https://github.com/DVNghiem/FlowDeck",
+    "tagline": "AI-powered multi-agent workflow orchestration with built-in safety intelligence",
+    "description": "FlowDeck adds a structured, multi-agent development workflow to OpenCode. It coordinates 25 specialist agents through a four-phase cycle — discuss, plan, execute, review — with persistent state that survives session restarts.\n\nKey features:\n- 25 specialist agents (architect, planner, coder, reviewer, tester, debugger, risk-analyst, policy-enforcer, and more)\n- 24 reusable workflow skills (TDD, security scan, deploy check, code review, and more)\n- 17 workflow commands for all project operations\n- 15 pre-built orchestration flows including Spec-Driven Development (SDD)\n- Persistent state via `.planning/STATE.md` — resume exactly where you left off\n- Wave-based parallel execution for independent tasks\n- AI Safety layer: patch trust scoring, edit gates, phase gating, arch constraint enforcement, failure replay, and regression prediction\n- Deep System Hooks: context monitoring, session idle summaries, shell environment injection\n- Built-in MCPs: Context7 (docs), Exa (web search), Grep.app (code search)\n- Ensemble Reasoning via `/fd-council` for synthesized consensus from multiple agents\n- Persistent Memory with SQLite for tool executions and session summaries",
+    "tags": [
+      "workflow",
+      "orchestration",
+      "multi-agent",
+      "planning",
+      "security",
+      "TDD",
+      "skills",
+      "commands"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "flowdeck",
+      "github:DVNghiem/FlowDeck"
+    ]
+  },
+  {
+    "productId": "forloop-planner",
+    "displayName": "ForLoop Planner",
+    "repoUrl": "https://github.com/forloop-cc/forloop-opencode-plugin-planner",
+    "tagline": "Autopilot development. Plan with ForLoop agent. Build, Test, Deploy on cloud in one go.",
+    "description": "ForLoop offers an all-in-one platform that covers the entire development lifecycle, from initial planning and coding to automated testing and cloud deployment.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "forloop-opencode-plugin-planner",
+      "github:forloop-cc/forloop-opencode-plugin-planner"
+    ]
+  },
+  {
+    "productId": "froggy",
+    "displayName": "Froggy",
+    "repoUrl": "https://github.com/smartfrog/opencode-froggy",
+    "tagline": "Hooks and specialized agents",
+    "description": "Plugin providing Claude Code-style hooks, specialized agents, and tools like gitingest.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-froggy",
+      "github:smartfrog/opencode-froggy"
+    ]
+  },
+  {
+    "productId": "gemini-auth",
+    "displayName": "Gemini Auth",
+    "repoUrl": "https://github.com/jenslys/opencode-gemini-auth",
+    "tagline": "Google account auth",
+    "description": "Authenticate the Opencode CLI with your Google account so you can use your existing Gemini plan.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-gemini-auth",
+      "github:jenslys/opencode-gemini-auth"
+    ]
+  },
+  {
+    "productId": "google-ai-search",
+    "displayName": "Google AI Search",
+    "repoUrl": "https://github.com/IgorWarzocha/Opencode-Google-AI-Search-Plugin",
+    "tagline": "Query Google AI Mode (SGE)",
+    "description": "An opencode plugin that exposes a native tool for querying Google AI Mode (SGE).",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-google-ai-search-plugin",
+      "github:IgorWarzocha/Opencode-Google-AI-Search-Plugin"
+    ]
+  },
+  {
+    "productId": "handoff",
+    "displayName": "Handoff",
+    "repoUrl": "https://github.com/joshuadavidthomas/opencode-handoff",
+    "tagline": "Session handoff prompts",
+    "description": "Creates focused handoff prompts for continuing work in a new session.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-handoff",
+      "github:joshuadavidthomas/opencode-handoff"
+    ]
+  },
+  {
+    "productId": "harness-memory",
+    "displayName": "Harness Memory",
+    "repoUrl": "https://github.com/smc2315/harness-memory",
+    "tagline": "Persistent project memory - 73 percent fewer tokens than CLAUDE.md, with human review",
+    "description": "Auto-captures evidence from tool interactions and materializes memories through a multi-gate pipeline. 4-layer activation engine selects the right memories per context. Replaces CLAUDE.md with structured, searchable, reviewable project memory. Local-first (sql.js WASM), zero cloud dependency.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "harness-memory",
+      "github:smc2315/harness-memory"
+    ]
+  },
+  {
+    "productId": "hiai-opencode",
+    "displayName": "hiai-opencode",
+    "repoUrl": "https://github.com/HiAi-gg/hiai-opencode",
+    "tagline": "Canonical 12-agent model with bundled skills, MCP, LSP, and ralph-loop",
+    "description": "Unified plugin shipping 10 visible agents (Bob, Coder, Strategist, Critic, Guard, Researcher, Designer, Manager, Brainstormer, Vision) plus hidden Sub and Agent Skills. Bundles MCP wiring (playwright, stitch, sequential-thinking, firecrawl, rag, mempalace, context7, websearch, grep_app), LSP, skill materialization, and a multi-layer continuation system (todo enforcer, ralph-loop, ULTRAWORK auto-start) in one install.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "hiai-opencode",
+      "github:HiAi-gg/hiai-opencode"
+    ]
+  },
+  {
+    "productId": "honcho",
+    "displayName": "Honcho",
+    "repoUrl": "https://github.com/plastic-labs/opencode-honcho",
+    "tagline": "AI-native long-term memory for OpenCode",
+    "description": "Give OpenCode persistent memory that survives context wipes, session restarts, and fresh chats. Honcho remembers what you're working on, durable preferences, and prior context across projects. Supports cloud and self-hosted deployments with configurable session strategies.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-honcho",
+      "github:plastic-labs/opencode-honcho"
+    ]
+  },
+  {
+    "productId": "html-to-markdown",
+    "displayName": "HTML to Markdown",
+    "repoUrl": "https://github.com/xberg-io/plugins",
+    "tagline": "Fast, lossless HTML to Markdown conversion",
+    "description": "OpenCode plugin exposing html-to-markdown CLI tools for converting HTML to clean Markdown with metadata, tables, and document structure.",
+    "tags": [
+      "html",
+      "markdown",
+      "conversion",
+      "cli"
+    ],
+    "scope": [
+      "global",
+      "project"
+    ],
+    "candidates": [
+      "@xberg-io/opencode-xberg",
+      "plugins",
+      "github:xberg-io/plugins"
+    ]
+  },
+  {
+    "productId": "kibi-opencode",
+    "displayName": "kibi-opencode",
+    "repoUrl": "https://github.com/Looted/kibi",
+    "tagline": "Repo-local, branch-scoped knowledge and traceability for OpenCode",
+    "description": "Plugin-first entry point into the Kibi stack for OpenCode users. It adds context-aware\nguidance, routes durable code comments toward Kibi artifacts, runs non-blocking background\nsync and targeted validation checks, and helps keep repo knowledge branch-local and queryable.",
+    "tags": [
+      "opencode",
+      "plugin",
+      "mcp",
+      "traceability"
+    ],
+    "scope": [
+      "project"
+    ],
+    "candidates": [
+      "kibi-opencode",
+      "kibi",
+      "github:Looted/kibi"
+    ]
+  },
+  {
+    "productId": "kilo-auth",
+    "displayName": "Kilo Gateway Auth",
+    "repoUrl": "https://github.com/JungHoonGhae/opencode-kilo-auth",
+    "tagline": "Kilo Gateway provider",
+    "description": "Adds Kilo Gateway provider support to OpenCode.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-kilo-auth",
+      "github:JungHoonGhae/opencode-kilo-auth"
+    ]
+  },
+  {
+    "productId": "lemma",
+    "displayName": "Lemma",
+    "repoUrl": "https://github.com/xenitV1/lemma",
+    "tagline": "Persistent memory layer for LLMs via MCP - local, zero-dependency, works on all clients",
+    "description": "Biological memory model for AI coding agents. Features confidence decay/boost, Fuse.js fuzzy dedup, guide system with usage tracking, cross-references, cumulative backup, virtual session tracking, and universal memory injection via tool descriptions (works on Claude Desktop, Cursor, VS Code, Gemini CLI, opencode, and any MCP client). No API keys, no cloud, fully local JSONL storage. 20 MCP tools, 110 tests, MIT licensed.",
+    "tags": [
+      "memory",
+      "mcp",
+      "persistence",
+      "context",
+      "claude",
+      "cursor"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "lemma",
+      "github:xenitV1/lemma"
+    ]
+  },
+  {
+    "productId": "liter-llm",
+    "displayName": "liter-llm",
+    "repoUrl": "https://github.com/xberg-io/plugins",
+    "tagline": "Universal LLM API client for 143 providers",
+    "description": "OpenCode plugin exposing liter-llm tools for chat, streaming, embeddings, and an OpenAI-compatible proxy across 143 providers.",
+    "tags": [
+      "llm",
+      "openai",
+      "proxy",
+      "cli"
+    ],
+    "scope": [
+      "global",
+      "project"
+    ],
+    "candidates": [
+      "@xberg-io/opencode-xberg",
+      "plugins",
+      "github:xberg-io/plugins"
+    ]
+  },
+  {
+    "productId": "magic-context",
+    "displayName": "Magic Context",
+    "repoUrl": "https://github.com/cortexkit/opencode-magic-context",
+    "tagline": "Lossless context management with background compression",
+    "description": "Cache-aware context management that keeps long sessions productive. Background historian compresses old conversation into structured compartments while you keep working. Includes cross-session project memory, unified search across history/memories/facts, overnight dreamer for memory maintenance, and prompt-cache-safe deferred operations.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-magic-context",
+      "github:cortexkit/opencode-magic-context"
+    ]
+  },
+  {
+    "productId": "managed-skills",
+    "displayName": "Manage Skills",
+    "repoUrl": "https://github.com/Randroids-Dojo/ManageSkills",
+    "tagline": "Wizard-driven skills management for OpenCode.",
+    "description": "Modal-based skill install, remove, list, and update workflow that avoids ANSI prompts while wrapping the skills CLI inside OpenCode.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "manageskills",
+      "github:Randroids-Dojo/ManageSkills"
+    ]
+  },
+  {
+    "productId": "micode",
+    "displayName": "Micode",
+    "repoUrl": "https://github.com/vtemian/micode",
+    "tagline": "Brainstorm-Plan-Implement workflow",
+    "description": "Structured workflow with session continuity, subagent orchestration, git worktree isolation, and AST-aware tools.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "micode",
+      "github:vtemian/micode"
+    ]
+  },
+  {
+    "productId": "model-announcer",
+    "displayName": "Model Announcer",
+    "repoUrl": "https://github.com/ramarivera/opencode-model-announcer",
+    "tagline": "Model self-awareness",
+    "description": "Automatically injects the current model name into the chat context so the LLM is self-aware.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-model-announcer",
+      "github:ramarivera/opencode-model-announcer"
+    ]
+  },
+  {
+    "productId": "morph-fast-apply",
+    "displayName": "Morph Fast Apply",
+    "repoUrl": "https://github.com/JRedeker/opencode-morph-fast-apply",
+    "tagline": "10,500+ tokens/sec code editing",
+    "description": "Integrates Morph's Fast Apply API for faster code editing with lazy edit markers and unified diff output.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-morph-fast-apply",
+      "github:JRedeker/opencode-morph-fast-apply"
+    ]
+  },
+  {
+    "productId": "oc-mnemoria",
+    "displayName": "oc-mnemoria",
+    "repoUrl": "https://github.com/one-bit/oc-mnemoria",
+    "tagline": "Persistent shared memory (hive mind) for OpenCode agents across sessions",
+    "description": "Gives all OpenCode agents a shared persistent memory store where every agent can read and write. Each entry is tagged with the creating agent (plan, build, ask, review) so no context is lost between roles. Powered by the mnemoria Rust engine with hybrid BM25 + semantic search, CRC32 checksum chains, and an append-only binary format. Includes 7 tools and /mn-* slash commands.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "oc-mnemoria",
+      "github:one-bit/oc-mnemoria"
+    ]
+  },
+  {
+    "productId": "oh-my-opencode",
+    "displayName": "Oh My Opencode",
+    "repoUrl": "https://github.com/code-yeongyu/oh-my-opencode",
+    "tagline": "Agents & Pre-built tools",
+    "description": "Background agents, pre-built tools (LSP/AST/MCP), curated agents, and a Claude Code compatible layer.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "oh-my-opencode",
+      "github:code-yeongyu/oh-my-opencode"
+    ]
+  },
+  {
+    "productId": "oh-my-opencode-slim",
+    "displayName": "Oh My Opencode Slim",
+    "repoUrl": "https://github.com/alvinunreal/oh-my-opencode-slim",
+    "tagline": "Lightweight agent orchestration with reduced token usage",
+    "description": "Slimmed-down fork of oh-my-opencode focused on core agent orchestration. Features specialized sub-agents (Explorer, Oracle, Librarian, Designer, etc.), background task management, LSP/AST tools, tmux integration for live agent visibility, and MCP servers. Optimized to consume significantly fewer tokens.",
+    "tags": [
+      "agents",
+      "orchestration",
+      "background-tasks",
+      "lsp",
+      "mcp"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "oh-my-opencode-slim",
+      "github:alvinunreal/oh-my-opencode-slim"
+    ]
+  },
+  {
+    "productId": "omniroute-auth",
+    "displayName": "Omniroute Auth",
+    "repoUrl": "https://github.com/Alph4d0g/opencode-omniroute-auth",
+    "tagline": "Omniroute authentication provider",
+    "description": "Connect and automatically fetch models from your Omniroute instance",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-omniroute-auth",
+      "github:Alph4d0g/opencode-omniroute-auth"
+    ]
+  },
+  {
+    "productId": "open-conclave",
+    "displayName": "Open Conclave",
+    "repoUrl": "https://github.com/martinzokov/open-conclave",
+    "tagline": "Multi-agent debates, moderated by a captain agent until they reach consensus",
+    "description": "In the style of Grok 4.20, multiple agents are dispatched to answer the same query. Each one has a different system prompt (logical, creative, research-focused) and have to reach a consensus for the final output. The user can specify which provider/model they want to use and override the system prompt of each agent via config.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "open-conclave",
+      "github:martinzokov/open-conclave"
+    ]
+  },
+  {
+    "productId": "open-dynamic-workflows",
+    "displayName": "Open Dynamic Workflows",
+    "repoUrl": "https://github.com/Suraj1235/open-dynamic-workflows",
+    "tagline": "Dynamic multi-agent workflows for OpenCode — plan, orchestrate, and verify with the script as the orchestrator",
+    "description": "An MIT-licensed engine bringing Claude-Code-style dynamic workflows and ultracode to OpenCode. A local daemon runs a generated orchestration script with concurrent agents, adversarial verification, and crash-resume; the OpenCode plugin adds workflow/ultracode triggers and a planning UI. Bring your own model — Anthropic, any OpenAI-compatible endpoint, or local Ollama.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "open-dynamic-workflows",
+      "github:Suraj1235/open-dynamic-workflows"
+    ]
+  },
+  {
+    "productId": "open-plan-annotator",
+    "displayName": "open-plan-annotator",
+    "repoUrl": "https://github.com/ndom91/open-plan-annotator",
+    "tagline": "Annotate LLM plans like a Google Doc!",
+    "description": "A fully local agentic coding plugin that intercepts plan mode and opens an annotation UI in your browser. Select text to strikethrough, replace, insert, or comment — then approve the plan or request changes",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "open-plan-annotator",
+      "github:ndom91/open-plan-annotator"
+    ]
+  },
+  {
+    "productId": "openai-codex-auth",
+    "displayName": "OpenAI Codex Auth",
+    "repoUrl": "https://github.com/numman-ali/opencode-openai-codex-auth",
+    "tagline": "ChatGPT Plus/Pro OAuth",
+    "description": "This plugin enables opencode to use OpenAI's Codex backend via ChatGPT Plus/Pro OAuth authentication.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-openai-codex-auth",
+      "github:numman-ali/opencode-openai-codex-auth"
+    ]
+  },
+  {
+    "productId": "opencode-adaptive-thinking",
+    "displayName": "OpenCode Adaptive Thinking",
+    "repoUrl": "https://github.com/ian-pascoe/opencode-adaptive-thinking",
+    "tagline": "Adaptive reasoning-effort control",
+    "description": "OpenCode plugin that lets agents actively adjust model reasoning effort during a session, with configurable system guidance and a tool for switching between valid reasoning-effort variants.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-adaptive-thinking",
+      "github:ian-pascoe/opencode-adaptive-thinking"
+    ]
+  },
+  {
+    "productId": "opencode-agent-identity",
+    "displayName": "Agent Identity",
+    "repoUrl": "https://github.com/gotgenes/opencode-agent-identity",
+    "tagline": "Agent self-identity and per-message attribution for multi-agent sessions",
+    "description": "Two plugins that improve agent identity awareness. AgentSelfIdentityPlugin injects a one-liner into the system prompt so the model knows which agent it's operating as. AgentAttributionToolPlugin exposes a tool for querying per-message agent attribution via the SDK, useful for agents that review multi-agent sessions.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-agent-identity",
+      "github:gotgenes/opencode-agent-identity"
+    ]
+  },
+  {
+    "productId": "opencode-agent-tmux",
+    "displayName": "OpenCode Agent Tmux",
+    "repoUrl": "https://github.com/AnganSamadder/opencode-agent-tmux",
+    "tagline": "Real-time tmux panes for OpenCode agents with auto-launch, streaming, and cleanup.",
+    "description": "Smart tmux integration for OpenCode that auto-spawns panes to stream agent output, supports flexible layouts and multi-port setups, and cleans up when sessions finish.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-agent-tmux",
+      "github:AnganSamadder/opencode-agent-tmux"
+    ]
+  },
+  {
+    "productId": "opencode-agents-sidebar",
+    "displayName": "Opencode Agents Sidebar",
+    "repoUrl": "https://github.com/Mark1708/opencode-agents-sidebar",
+    "tagline": "Browse configured OhMyOpenAgent agents in the TUI",
+    "description": "OpenCode sidebar plugin that displays configured OhMyOpenAgent agents with lifecycle-based categories, collapsible sections, descriptions, and model information.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-agents-sidebar",
+      "github:Mark1708/opencode-agents-sidebar"
+    ]
+  },
+  {
+    "productId": "opencode-arise",
+    "displayName": "@bluelovers/opencode-arise",
+    "repoUrl": "https://github.com/bluelovers/opencode-arise",
+    "tagline": "「⚔️ ARISE!」　A Solo Leveling themed orchestrator harness for OpenCode",
+    "description": "A lightweight, token-efficient orchestrator layer. Enables parallel background task execution in OpenCode. Launch AI agents to work simultaneously on exploration and research while continuing with other tasks. Allows specifying custom models for each_agent via configuration.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "@bluelovers/opencode-arise",
+      "opencode-arise",
+      "github:bluelovers/opencode-arise"
+    ]
+  },
+  {
+    "productId": "opencode-ascii",
+    "displayName": "opencode-ascii",
+    "repoUrl": "https://github.com/d3vv3/opencode-ascii",
+    "tagline": "Strip unicode characters from output and replace them by their ASCII equivalents",
+    "description": "Substitute unicode characters for ASCII. Em-dash (—) and en-dash (–) for hyphens (-); right arrow (→) for (->) and so on.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-ascii",
+      "github:d3vv3/opencode-ascii"
+    ]
+  },
+  {
+    "productId": "opencode-bmad-workflow",
+    "displayName": "opencode-bmad-workflow",
+    "repoUrl": "https://github.com/Alex-stack-cell/opencode-bmad-workflow",
+    "tagline": "BMAD workflow plugin — automates epic, feature, sprint and code review workflows using specialized AI agents",
+    "description": "Brings the BMAD (Breakthrough Method of Agile AI-Driven Development) methodology to OpenCode. Provides specialized agents for product management, architecture, development, and QA roles. Automates epic planning, feature breakdown, sprint workflows, and code reviews through a structured multi-agent pipeline.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-bmad-workflow",
+      "github:Alex-stack-cell/opencode-bmad-workflow"
+    ]
+  },
+  {
+    "productId": "opencode-canvas",
+    "displayName": "Opencode Canvas",
+    "repoUrl": "https://github.com/mailshieldai/opencode-canvas",
+    "tagline": "Interactive terminal canvases in tmux splits",
+    "description": "Interactive terminal canvases (calendars, documents, flight booking) in tmux splits. Port of claude-canvas for OpenCode.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-canvas",
+      "github:mailshieldai/opencode-canvas"
+    ]
+  },
+  {
+    "productId": "opencode-ccs-sync",
+    "displayName": "Claude Code Switch (CCS) OpenCode Sync",
+    "repoUrl": "https://github.com/JasonLandbridge/opencode-ccs-sync",
+    "tagline": "Claude Code Switch (CCS) to OpenCode sync",
+    "description": "An OpenCode plugin that reads your Claude Code Switch (CCS) configuration and automatically syncs the providers into your OpenCode config.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-ccs-sync",
+      "github:JasonLandbridge/opencode-ccs-sync"
+    ]
+  },
+  {
+    "productId": "opencode-chromium-browser-plugin",
+    "displayName": "OpenCode Chromium Browser Plugin",
+    "repoUrl": "https://github.com/DJOCKER-FACE/opencode-chromium-browser-plugin",
+    "tagline": "Browser automation for Chromium browsers with a readable extension and native host",
+    "description": "OpenCode browser automation for Chromium-based browsers using a readable Manifest V3 extension, Node.js native messaging host, and OpenCode-native tools. Supports Chrome, Edge, Brave, Chromium, screenshots, CDP commands, DOM actions, downloads, console/network inspection, and controlled tab sessions.",
+    "tags": [
+      "browser",
+      "chromium",
+      "automation",
+      "native-messaging",
+      "cdp"
+    ],
+    "scope": [
+      "project"
+    ],
+    "candidates": [
+      "opencode-chromium-browser-plugin",
+      "github:DJOCKER-FACE/opencode-chromium-browser-plugin"
+    ]
+  },
+  {
+    "productId": "opencode-claude-memory",
+    "displayName": "OpenCode Claude Memory",
+    "repoUrl": "https://github.com/kuitos/opencode-claude-memory",
+    "tagline": "Claude Code-compatible memory",
+    "description": "Share persistent Markdown memory between OpenCode and Claude Code using Claude Code-compatible paths and file formats.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-claude-memory",
+      "github:kuitos/opencode-claude-memory"
+    ]
+  },
+  {
+    "productId": "opencode-ensemble",
+    "displayName": "OpenCode Ensemble",
+    "repoUrl": "https://github.com/hueyexe/opencode-ensemble",
+    "tagline": "Parallel agent teams for OpenCode",
+    "description": "Coordinate parallel OpenCode agents with peer messaging, a shared task board, git worktree isolation, and a live dashboard.",
+    "tags": [
+      "agents",
+      "multi-agent",
+      "orchestration",
+      "worktrees",
+      "dashboard"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-ensemble",
+      "github:hueyexe/opencode-ensemble"
+    ]
+  },
+  {
+    "productId": "opencode-github-release",
+    "displayName": "GitHub Release",
+    "repoUrl": "https://github.com/amestsantim/opencode-github-release",
+    "tagline": "Automated GitHub releases",
+    "description": "Create and publish GitHub releases with semantic versioning, tag management, and auto-generated release notes.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-github-release",
+      "github:amestsantim/opencode-github-release"
+    ]
+  },
+  {
+    "productId": "opencode-goopspec",
+    "displayName": "GoopSpec",
+    "repoUrl": "https://github.com/hffmnnj/opencode-goopspec",
+    "tagline": "Spec-driven development workflow",
+    "description": "Transforms AI-assisted coding with spec-driven workflows. Features 5-phase workflow (Plan, Research, Specify, Execute, Accept), contract gates for user confirmation, 12 specialized subagents, persistent memory system, wave-based execution with atomic commits, and deviation rules for handling unexpected situations.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-goopspec",
+      "github:hffmnnj/opencode-goopspec"
+    ]
+  },
+  {
+    "productId": "opencode-gpt-imagegen",
+    "displayName": "GPT Imagegen",
+    "repoUrl": "https://github.com/yuji-hatakeyama/opencode-gpt-imagegen",
+    "tagline": "gpt-image-2 in OpenCode — no API cost when using your ChatGPT subscription",
+    "description": "Brings gpt-image-2 (ChatGPT Images 2) image generation to OpenCode. When you sign into OpenCode with your ChatGPT account, generations are billed against your existing Plus / Pro / Business plan — no per-image API cost. An OpenAI API key path is also planned. Supports reference images for style guidance and edits.",
+    "tags": [
+      "openai",
+      "gpt-image-2",
+      "gpt-image",
+      "image-generation",
+      "image-editing",
+      "text-to-image",
+      "chatgpt",
+      "chatgpt-images",
+      "chatgpt-oauth"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-gpt-imagegen",
+      "github:yuji-hatakeyama/opencode-gpt-imagegen"
+    ]
+  },
+  {
+    "productId": "opencode-hooks-plugin",
+    "displayName": "Opencode Hooks Plugin",
+    "repoUrl": "https://github.com/romain325/opencode-hooks-plugin",
+    "tagline": "Claude code compatible hooks",
+    "description": "Use Claude code hooks definition and hook them to opencode hooks.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-hooks-plugin",
+      "github:romain325/opencode-hooks-plugin"
+    ]
+  },
+  {
+    "productId": "opencode-host-notify-bridge",
+    "displayName": "Opencode Host Notify Bridge",
+    "repoUrl": "https://github.com/Zaradacht/opencode-host-notify-bridge",
+    "tagline": "Devcontainer notifications bridged back to the host",
+    "description": "OpenCode plugin and host helper that forward permission, question, and idle notifications from devcontainers to the host machine for desktop alerts and sound.",
+    "tags": [
+      "devcontainer",
+      "notifications",
+      "zed",
+      "macos"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-host-notify-bridge",
+      "github:Zaradacht/opencode-host-notify-bridge"
+    ]
+  },
+  {
+    "productId": "opencode-ignore",
+    "displayName": "Opencode Ignore",
+    "repoUrl": "https://github.com/lgladysz/opencode-ignore",
+    "tagline": "Ignore files based on pattern",
+    "description": "Plugin to ignore directory/file based on pattern.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-ignore",
+      "github:lgladysz/opencode-ignore"
+    ]
+  },
+  {
+    "productId": "opencode-litellm",
+    "displayName": "Opencode LiteLLM",
+    "repoUrl": "https://github.com/yuseferi/opencode-litellm",
+    "tagline": "Auto-discover models from a LiteLLM proxy",
+    "description": "Drop-in LiteLLM provider for OpenCode with zero configuration. Auto-detects a running\nLiteLLM proxy on common ports (4000, 8000, 8080), pulls every model from /v1/models,\nand registers them in OpenCode automatically — no model lists to hand-maintain. Smart\nname formatting, modality categorization (chat/embedding/image/audio), provider\nextraction, optional API-key auth, and a 5-second timeout so a slow proxy never blocks\nstartup.",
+    "tags": [
+      "litellm",
+      "provider",
+      "openai-compatible",
+      "llm-proxy",
+      "model-discovery"
+    ],
+    "scope": [
+      "global",
+      "project"
+    ],
+    "candidates": [
+      "opencode-litellm",
+      "github:yuseferi/opencode-litellm"
+    ]
+  },
+  {
+    "productId": "opencode-log-sanitizer",
+    "displayName": "Opencode Log Sanitizer",
+    "repoUrl": "https://github.com/errhythm/opencode-log-sanitizer",
+    "tagline": "Sanitizes pasted logs by redacting long strings, JWTs, bcrypt hashes, and base64 blobs",
+    "description": "Sanitizes pasted logs before sending them to AI by redacting long quoted strings, JWT tokens, bcrypt hashes, and base64 blobs to reduce token usage and remove irrelevant noise.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-log-sanitizer",
+      "github:errhythm/opencode-log-sanitizer"
+    ]
+  },
+  {
+    "productId": "opencode-mem",
+    "displayName": "Opencode Mem",
+    "repoUrl": "https://github.com/tickernelz/opencode-mem",
+    "tagline": "Persistent memory with vector database",
+    "description": "A persistent memory system for AI coding agents that enables long-term context retention across sessions using local vector database technology. Features dual memory scopes, web interface, auto-capture system, and multi-provider AI support.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-mem",
+      "github:tickernelz/opencode-mem"
+    ]
+  },
+  {
+    "productId": "opencode-mission-control",
+    "displayName": "OpenCode Mission Control",
+    "repoUrl": "https://github.com/nigel-dev/opencode-mission-control",
+    "tagline": "Command center for parallel agents — worktree isolation, DAG plans, merge train, PRs",
+    "description": "Orchestrates parallel OpenCode agents in tmux-isolated git worktrees with live inspection (capture/attach/diff), a dashboard overview, agent status reporting, and in-chat notifications. Supports DAG-based plans with autopilot/copilot/supervisor modes and a merge train with test gating and automatic rollback.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-mission-control",
+      "github:nigel-dev/opencode-mission-control"
+    ]
+  },
+  {
+    "productId": "opencode-models-discovery",
+    "displayName": "Opencode Models Discovery",
+    "repoUrl": "https://github.com/yuhp/opencode-models-discovery",
+    "tagline": "Configurable model discovery and filtering without long manual config",
+    "description": "OpenCode plugin for discovering models from OpenAI-compatible providers and API gateways, with provider and model filtering so users can avoid maintaining large configs or loading every model at once.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-models-discovery",
+      "github:yuhp/opencode-models-discovery"
+    ]
+  },
+  {
+    "productId": "opencode-mystatus",
+    "displayName": "opencode-mystatus",
+    "repoUrl": "https://github.com/vbgate/opencode-mystatus",
+    "tagline": "Check AI subscription quotas",
+    "description": "Check all your AI subscription quotas in one command. Supports OpenAI (Plus/Pro/Codex, etc.), Zhipu AI, Google Antigravity, and more.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-mystatus",
+      "github:vbgate/opencode-mystatus"
+    ]
+  },
+  {
+    "productId": "opencode-notify",
+    "displayName": "Opencode Notify",
+    "repoUrl": "https://github.com/kdcokenny/opencode-notify",
+    "tagline": "Native OS notifications",
+    "description": "Native OS notifications for OpenCode - know when tasks complete.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-notify",
+      "github:kdcokenny/opencode-notify"
+    ]
+  },
+  {
+    "productId": "opencode-ntfy.sh",
+    "displayName": "OpenCode ntfy.sh",
+    "repoUrl": "https://github.com/lannuttia/opencode-ntfy.sh",
+    "tagline": "Push notifications to keep you in the know, even when you're on the go.",
+    "description": "An OpenCode plugin that adds push notifications through ntfy.sh.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-ntfy.sh",
+      "github:lannuttia/opencode-ntfy.sh"
+    ]
+  },
+  {
+    "productId": "opencode-personality",
+    "displayName": "opencode-personality",
+    "repoUrl": "https://github.com/joostvanwollingen/opencode-personality",
+    "tagline": "A configurable personality and mood system plugin for OpenCode.",
+    "description": "Give your AI assistant a distinct personality with customizable moods that drift over time.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-personality",
+      "github:joostvanwollingen/opencode-personality"
+    ]
+  },
+  {
+    "productId": "opencode-plan-manager",
+    "displayName": "OpenCode Plan Manager",
+    "repoUrl": "https://github.com/yurihbm/opencode-plan-manager",
+    "tagline": "AI-Native Implementation Planning for Modern Agentic Workflows",
+    "description": "High-performance, minimalist plugin designed to bridge the gap between complex implementation strategies and autonomous execution. Selective context loading, zero-hallucination schemas, visible filesystem kanban.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-plan-manager",
+      "github:yurihbm/opencode-plan-manager"
+    ]
+  },
+  {
+    "productId": "opencode-plugin-openspec",
+    "displayName": "OpenSpec",
+    "repoUrl": "https://github.com/Octane0411/opencode-plugin-openspec",
+    "tagline": "Add Architecture planning and specification agent for OpenSpec",
+    "description": "An OpenCode plugin that integrates OpenSpec, providing a dedicated agent for planning and specifying software architecture.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-plugin-openspec",
+      "github:Octane0411/opencode-plugin-openspec"
+    ]
+  },
+  {
+    "productId": "opencode-plugin-otel",
+    "displayName": "opencode-plugin-otel",
+    "repoUrl": "https://github.com/DEVtheOPS/opencode-plugin-otel",
+    "tagline": "OpenTelemetry telemetry exporter for opencode sessions, mirroring Claude Code monitoring signals",
+    "description": "Exports metrics, logs, and traces from opencode sessions via OTLP/gRPC to any OpenTelemetry-compatible backend (Datadog, Honeycomb, Grafana Cloud, etc.). Instruments session lifecycle, token usage, cost, tool durations, and git commits — mirroring the same signals as Claude Code's monitoring.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-plugin-otel",
+      "github:DEVtheOPS/opencode-plugin-otel"
+    ]
+  },
+  {
+    "productId": "opencode-pr-signature",
+    "displayName": "PR Auto-Signature",
+    "repoUrl": "https://github.com/arttttt/opencode-pr-signature",
+    "tagline": "Automatically adds AI model signature to PRs, Issues, and Commits",
+    "description": "Plugin that automatically appends AI model signature to Pull Requests, Issues, and git commit messages. Supports GitHub MCP tools, git CLI, and gh CLI. Recognizes 90+ AI models including Claude, GPT, Gemini, DeepSeek, Llama, Mistral, and more.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-pr-signature",
+      "github:arttttt/opencode-pr-signature"
+    ]
+  },
+  {
+    "productId": "opencode-provider-alias",
+    "displayName": "OpenCode Provider Alias",
+    "repoUrl": "https://github.com/baranwang/opencode-provider-alias",
+    "tagline": "Alias and curate OpenCode providers with model metadata from models.dev.",
+    "description": "Lets users define local OpenCode provider and model aliases hydrated from existing models.dev metadata.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-provider-alias",
+      "github:baranwang/opencode-provider-alias"
+    ]
+  },
+  {
+    "productId": "opencode-quota",
+    "displayName": "Opencode Quota",
+    "repoUrl": "https://github.com/slkiser/opencode-quota",
+    "tagline": "Quota toasts and token tracking",
+    "description": "Track quota and token usage across providers via automatic toasts and slash commands.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-quota",
+      "github:slkiser/opencode-quota"
+    ]
+  },
+  {
+    "productId": "opencode-quotes-plugin",
+    "displayName": "aerovato/opencode-quotes-plugin",
+    "repoUrl": "https://github.com/aerovato/opencode-quotes-plugin",
+    "tagline": "Display inspirational quotes instead of tips",
+    "description": "Replaces the default home-page tips with inspirational quotes for a more motivating OpenCode experience.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "aerovato/opencode-quotes-plugin",
+      "opencode-quotes-plugin",
+      "github:aerovato/opencode-quotes-plugin"
+    ]
+  },
+  {
+    "productId": "opencode-rag",
+    "displayName": "OpenCodeRAG",
+    "repoUrl": "https://github.com/MrDoe/OpenCodeRAG",
+    "tagline": "Local-first RAG plugin for semantic code search with tree-sitter chunking and LanceDB",
+    "description": "A local-first Retrieval-Augmented Generation plugin for OpenCode that enables semantic code\nsearch across your workspace. Features AST-aware chunking via tree-sitter (19 languages),\nincremental indexing with file-change detection, watch mode for live re-indexing, and\nconfigurable embeddings via Ollama (default) or OpenAI. Includes a CLI (index, query, status,\nclear) and an OpenCode plugin with a chunk retrieval tool + automatic chat.message file\nsuggestions. All processing stays local by default — no data leaves the machine.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencoderag",
+      "github:MrDoe/OpenCodeRAG"
+    ]
+  },
+  {
+    "productId": "opencode-research-papers",
+    "displayName": "Research Papers",
+    "repoUrl": "https://github.com/saim-x/opencode-research-papers",
+    "tagline": "Search arXiv and OpenAlex for research papers with recency and citation filtering",
+    "description": "OpenCode plugin that adds a research_papers tool for searching scholarly literature. Uses arXiv for fresh preprints and OpenAlex for broader metadata, citation counts, and open-access links. Supports filtering by latest, trending, or top-cited papers.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-research-papers",
+      "github:saim-x/opencode-research-papers"
+    ]
+  },
+  {
+    "productId": "opencode-review",
+    "displayName": "opencode-review",
+    "repoUrl": "https://github.com/sun-praise/opencode-review",
+    "tagline": "Automatic structured code review with configurable dimensions and auto-fix",
+    "description": "An automatic code review plugin for OpenCode CLI. Reviews staged changes when session goes idle, with configurable cooldown, multi-dimension analysis (code quality, security, performance, testing, documentation), severity levels, and auto-fix chain support.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-review",
+      "github:sun-praise/opencode-review"
+    ]
+  },
+  {
+    "productId": "opencode-roadmap",
+    "displayName": "Opencode Roadmap",
+    "repoUrl": "https://github.com/IgorWarzocha/Opencode-Roadmap",
+    "tagline": "Strategic planning",
+    "description": "Strategic roadmap planning and multi-agent coordination plugin. Provides project-wide planning capabilities.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-roadmap",
+      "github:IgorWarzocha/Opencode-Roadmap"
+    ]
+  },
+  {
+    "productId": "opencode-sessions",
+    "displayName": "Opencode Sessions",
+    "repoUrl": "https://github.com/malhashemi/opencode-sessions",
+    "tagline": "Session management",
+    "description": "Session management plugin for OpenCode with multi-agent collaboration support.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-sessions",
+      "github:malhashemi/opencode-sessions"
+    ]
+  },
+  {
+    "productId": "opencode-short-term-memory",
+    "displayName": "opencode-short-term-memory",
+    "repoUrl": "https://github.com/andrejtonev/opencode-short-term-memory",
+    "tagline": "Maintain user instructions and preferences throughout long sessions. No more repeating yourself.",
+    "description": "Automatically summarizes conversation context into structured session memory and injects it back into the system prompt every few turns — preserving user instructions, project context, decisions, and active references across long chats and compactions.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-short-term-memory",
+      "github:andrejtonev/opencode-short-term-memory"
+    ]
+  },
+  {
+    "productId": "opencode-simple-notify",
+    "displayName": "Simple Notify",
+    "repoUrl": "https://github.com/Yusuzhan/opencode-simple-notify",
+    "tagline": "Native desktop notifications with near-zero dependencies",
+    "description": "Lightweight desktop notification plugin for OpenCode. Sends native OS notifications via dbus (Linux) and osascript (macOS) when sessions complete, error, need approval, or wait for input. Shows project name, elapsed time, and message preview.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-simple-notify",
+      "github:Yusuzhan/opencode-simple-notify"
+    ]
+  },
+  {
+    "productId": "opencode-snip",
+    "displayName": "opencode-snip",
+    "repoUrl": "https://github.com/VincentHardouin/opencode-snip",
+    "tagline": "OpenCode plugin that prefixes shell commands with snip to reduce LLM token consumption by 60-90%",
+    "description": "Automatically prefixes supported shell commands (git, go, cargo, npm, docker, etc.) with snip to filter output before it reaches your LLM context window.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-snip",
+      "github:VincentHardouin/opencode-snip"
+    ]
+  },
+  {
+    "productId": "opencode-snippets",
+    "displayName": "Opencode Snippets",
+    "repoUrl": "https://github.com/JosXa/opencode-snippets",
+    "tagline": "Instant inline text expansion",
+    "description": "Instant inline text expansion for OpenCode. Type #snippet anywhere in your message and watch it transform. Brings DRY principles to prompt engineering with composable, shell-enabled snippets.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-snippets",
+      "github:JosXa/opencode-snippets"
+    ]
+  },
+  {
+    "productId": "opencode-swarm",
+    "displayName": "OpenCode Swarm",
+    "repoUrl": "https://github.com/zaxbysauce/opencode-swarm",
+    "tagline": "Verification-gated swarm with architect, review, test, and security agents",
+    "description": "Verification-gated OpenCode swarm with architect planning, independent review, test engineering, security checks, and resumable evidence.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-swarm",
+      "github:zaxbysauce/opencode-swarm"
+    ]
+  },
+  {
+    "productId": "opencode-synced",
+    "displayName": "Opencode Synced",
+    "repoUrl": "https://github.com/iHildy/opencode-synced",
+    "tagline": "Sync configs across machines",
+    "description": "Enables syncing global opencode configurations across machines with public/private visibility options.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-synced",
+      "github:iHildy/opencode-synced"
+    ]
+  },
+  {
+    "productId": "opencode-system-prompt-logger",
+    "displayName": "System Prompt Logger",
+    "repoUrl": "https://github.com/tlinhart/opencode-system-prompt-logger",
+    "tagline": "System prompt logger",
+    "description": "OpenCode plugin that intercepts the system prompt before it's sent to the LLM and logs it.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-system-prompt-logger",
+      "github:tlinhart/opencode-system-prompt-logger"
+    ]
+  },
+  {
+    "productId": "opencode-telemetry",
+    "displayName": "Opencode Telemetry",
+    "repoUrl": "https://github.com/agostinilabsrl/opencode-telemetry",
+    "tagline": "Passive cross-session telemetry to local SQLite; cost rollups across agent orchestration chains",
+    "description": "Logs every opencode session to a local SQLite database automatically — tokens, tool calls, skills, per-turn cost. Aggregates costs across orchestration chains (conductor + child sessions), offers turn-by-turn forensic inspection, and ships an `octm` CLI for reports without spending model tokens. Zero cloud, zero network, no message bodies stored.",
+    "tags": [
+      "telemetry",
+      "observability",
+      "cost-tracking",
+      "sqlite",
+      "local-first",
+      "orchestration"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-telemetry",
+      "github:agostinilabsrl/opencode-telemetry"
+    ]
+  },
+  {
+    "productId": "opencode-throughput",
+    "displayName": "OpenCode Throughput",
+    "repoUrl": "https://github.com/Howardzhangdqs/opencode-throughput",
+    "tagline": "Real-time LLM performance monitoring",
+    "description": "Real-time LLM performance monitoring plugin for OpenCode. Tracks TTFT, TPS, latency, token usage, and cost per model with toast notifications and a TUI sidebar display.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-throughput",
+      "github:Howardzhangdqs/opencode-throughput"
+    ]
+  },
+  {
+    "productId": "opencode-token-tracker",
+    "displayName": "OpenCode Token Tracker",
+    "repoUrl": "https://github.com/eserete/opencode-token-tracker",
+    "tagline": "Real-time token usage, cost, and latency tracking for every AI request in OpenCode",
+    "description": "Displays a toast after each AI response with input/output tokens, cache hits, reasoning tokens, response latency, per-message cost, cumulative session cost, model identifier, and request count. Automatically aggregates tokens from subagent sessions spawned via the Task tool. Zero config — drop the file in and it works.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-token-tracker",
+      "github:eserete/opencode-token-tracker"
+    ]
+  },
+  {
+    "productId": "opencode-tts",
+    "displayName": "Opencode TTS",
+    "repoUrl": "https://github.com/StefanoChiodino/opencode-tts",
+    "tagline": "Voice summaries for idle responses",
+    "description": "Speaks assistant responses aloud when a session goes idle, with summary or full-text modes and local TTS backends.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-tts",
+      "github:StefanoChiodino/opencode-tts"
+    ]
+  },
+  {
+    "productId": "opencode-update-notifier",
+    "displayName": "Opencode update notifier",
+    "repoUrl": "https://github.com/tim-hilde/opencode-update-notifier",
+    "tagline": "Notify about plugin updates.",
+    "description": "Checks if your pinned plugins have newer versions available and shows a notification.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-update-notifier",
+      "github:tim-hilde/opencode-update-notifier"
+    ]
+  },
+  {
+    "productId": "opencode-usage-monitor",
+    "displayName": "Opencode Usage Monitor",
+    "repoUrl": "https://github.com/Mark1708/opencode-usage-monitor",
+    "tagline": "Monitor OpenAI and Z.AI usage quotas in the TUI",
+    "description": "OpenCode sidebar plugin that displays API usage quotas for OpenAI and Z.AI providers with per-model breakdowns, spend tracking, and configurable refresh controls.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-usage-monitor",
+      "github:Mark1708/opencode-usage-monitor"
+    ]
+  },
+  {
+    "productId": "opencode-visualizer",
+    "displayName": "Opencode Visualizer",
+    "repoUrl": "https://github.com/psinetron/opencode-visualiser",
+    "tagline": "2D pixel-art office for AI agents",
+    "description": "Turning raw OpenCode terminal logs into cozy 2D pixel office chaos. Watch your agents work, idle, and celebrate success in a bustling virtual office.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-visualiser",
+      "github:psinetron/opencode-visualiser"
+    ]
+  },
+  {
+    "productId": "opencode-workaholic",
+    "displayName": "OpenCode Workaholic",
+    "repoUrl": "https://github.com/RoderickQiu/opencode-workaholic",
+    "tagline": "Enforce mandatory working time and prevents premature \"done\" responses",
+    "description": "- AI has an early-exit problem: it says \"done\" at 30 seconds while edge cases are untested, bugs remain, and docs are missing. \n- Workaholic enforces mandatory working time for AI until the timer hits zero.\n- Blocks premature \"done\" responses until timer expire, and require AI to call checkout() to end the task.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-workaholic",
+      "github:RoderickQiu/opencode-workaholic"
+    ]
+  },
+  {
+    "productId": "opencode-workspace",
+    "displayName": "Opencode Workspace",
+    "repoUrl": "https://github.com/kdcokenny/opencode-workspace",
+    "tagline": "Multi-agent orchestration",
+    "description": "Bundled multi-agent orchestration harness with 16 components in one install.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-workspace",
+      "github:kdcokenny/opencode-workspace"
+    ]
+  },
+  {
+    "productId": "opencode-worktree",
+    "displayName": "Opencode Worktree",
+    "repoUrl": "https://github.com/kdcokenny/opencode-worktree",
+    "tagline": "Zero-friction git worktrees",
+    "description": "Zero-friction git worktrees for OpenCode. Auto-spawns terminals, syncs files, cleans up on exit.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-worktree",
+      "github:kdcokenny/opencode-worktree"
+    ]
+  },
+  {
+    "productId": "openhax-codex",
+    "displayName": "OpenHax Codex",
+    "repoUrl": "https://github.com/open-hax/codex",
+    "tagline": "OAuth authentication",
+    "description": "OAuth authentication plugin for personal coding assistance with ChatGPT Plus/Pro subscriptions.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "codex",
+      "github:open-hax/codex"
+    ]
+  },
+  {
+    "productId": "openskills",
+    "displayName": "Openskills",
+    "repoUrl": "https://github.com/numman-ali/openskills",
+    "tagline": "Alternative skills manager",
+    "description": "Alternative skills management plugin for opencode with enhanced features.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "openskills",
+      "github:numman-ali/openskills"
+    ]
+  },
+  {
+    "productId": "optimal-model-temps",
+    "displayName": "Optimal Model Temps",
+    "repoUrl": "https://github.com/Lyapsus/opencode-optimal-model-temps",
+    "tagline": "Optimal sampling temperatures",
+    "description": "Minimal plugin that nudges specific models to their preferred sampling temperature.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-optimal-model-temps",
+      "github:Lyapsus/opencode-optimal-model-temps"
+    ]
+  },
+  {
+    "productId": "orgx-opencode-plugin",
+    "displayName": "OrgX OpenCode Plugin",
+    "repoUrl": "https://github.com/useorgx/orgx-opencode-plugin",
+    "tagline": "OrgX Work Graph peer for task dispatch, receipts, deviations, and passive reconciliation",
+    "description": "OrgX OpenCode Plugin connects OpenCode sessions to the OrgX execution control plane. It receives OrgX task dispatches, drives the user's local OpenCode session, posts execution receipts and deviations back to OrgX, and writes compact Work Graph events for later audit-first reconciliation.",
+    "tags": [
+      "agent-orchestration",
+      "work-graph",
+      "task-dispatch",
+      "receipts",
+      "mcp"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "orgx-opencode-plugin",
+      "github:useorgx/orgx-opencode-plugin"
+    ]
+  },
+  {
+    "productId": "pilot",
+    "displayName": "Pilot",
+    "repoUrl": "https://github.com/athal7/opencode-pilot",
+    "tagline": "Automation daemon",
+    "description": "Automation daemon that polls for work from GitHub issues and Linear tickets.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-pilot",
+      "github:athal7/opencode-pilot"
+    ]
+  },
+  {
+    "productId": "plannotator",
+    "displayName": "Plannotator",
+    "repoUrl": "https://github.com/backnotprop/plannotator",
+    "tagline": "Interactive plan review UI",
+    "description": "Plan review UI with visual annotation, private/offline sharing, and Obsidian/Bear integration.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "plannotator",
+      "github:backnotprop/plannotator"
+    ]
+  },
+  {
+    "productId": "plugin-template",
+    "displayName": "Plugin Template",
+    "repoUrl": "https://github.com/zenobi-us/opencode-plugin-template",
+    "tagline": "CICD setup for plugins",
+    "description": "Focuses on providing the CICD setup with generator script, release please, bun publish, npm trusted publishing, and mise tasks.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-plugin-template",
+      "github:zenobi-us/opencode-plugin-template"
+    ]
+  },
+  {
+    "productId": "pocket-universe",
+    "displayName": "Pocket Universe",
+    "repoUrl": "https://github.com/spoons-and-mirrors/pocket-universe",
+    "tagline": "A subagent driven pocket universe for your primary agent",
+    "description": "Async agents can be powerful, but orchestration is at best finicky; they fire and forget, orphan work, lose context, waste time... and tokens. This plugin extends the native opencode subagent paradigm to provide closed loop, resilient, async agents, blocking main thread execution. A \"pocket universe\". This ships with three tools creating a robust system for parallel subagents to communicate and coordinate work",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "pocket-universe",
+      "github:spoons-and-mirrors/pocket-universe"
+    ]
+  },
+  {
+    "productId": "ralph-wiggum",
+    "displayName": "Ralph Wiggum",
+    "repoUrl": "https://github.com/Th0rgal/opencode-ralph-wiggum",
+    "tagline": "Self-correcting agent loops",
+    "description": "Iterative AI development loops with self-correcting agents based on the Ralph Wiggum technique.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-ralph-wiggum",
+      "github:Th0rgal/opencode-ralph-wiggum"
+    ]
+  },
+  {
+    "productId": "ring-a-bell-example",
+    "displayName": "Ring a Bell Example",
+    "repoUrl": "https://gist.github.com/ahosker/267f375a65378bcb9a867fd9a195db1e",
+    "tagline": "Simple terminal bell plugin",
+    "description": "A simple plugin to ring the terminal bell once a request is complete.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "267f375a65378bcb9a867fd9a195db1e",
+      "github:ahosker/267f375a65378bcb9a867fd9a195db1e"
+    ]
+  },
+  {
+    "productId": "semantic-anchors",
+    "displayName": "Semantic Anchors",
+    "repoUrl": "https://github.com/JensGrote/opencode-semantic-anchors",
+    "tagline": "Runtime contract enforcement for safe, traceable AI agents",
+    "description": "Runtime steering plugin that enforces behavioral contracts via plugin hooks. Monitors chat messages and tool calls against configurable rules, supports BLOCK/WARN modes, built-in profiles (socratic, architecture), step confirmation intervals, override mechanism, dynamic role switching, and Zod-validated YAML configuration.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-semantic-anchors",
+      "github:JensGrote/opencode-semantic-anchors"
+    ]
+  },
+  {
+    "productId": "shell-strategy",
+    "displayName": "Shell Strategy",
+    "repoUrl": "https://github.com/JRedeker/opencode-shell-strategy",
+    "tagline": "Avoid interactive shell hangs",
+    "description": "Instructions file that teaches LLMs how to avoid interactive shell commands that hang in non-TTY environments.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-shell-strategy",
+      "github:JRedeker/opencode-shell-strategy"
+    ]
+  },
+  {
+    "productId": "simple-memory",
+    "displayName": "Simple Memory",
+    "repoUrl": "https://github.com/cnicolov/opencode-plugin-simple-memory",
+    "tagline": "Git-based memory",
+    "description": "Simple plugin to manage memory inside a git repo that can be committed and reviewed by team members.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-plugin-simple-memory",
+      "github:cnicolov/opencode-plugin-simple-memory"
+    ]
+  },
+  {
+    "productId": "smart-title",
+    "displayName": "Smart Title",
+    "repoUrl": "https://github.com/Tarquinen/opencode-smart-title",
+    "tagline": "Auto-generate session titles",
+    "description": "Auto-generates meaningful session titles using AI.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-smart-title",
+      "github:Tarquinen/opencode-smart-title"
+    ]
+  },
+  {
+    "productId": "smart-voice-notify",
+    "displayName": "Smart Voice Notify",
+    "repoUrl": "https://github.com/MasuRii/opencode-smart-voice-notify",
+    "tagline": "Intelligent voice notifications",
+    "description": "Smart voice notification plugin with multiple TTS engines (ElevenLabs, Edge TTS, SAPI) and intelligent reminder system.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-smart-voice-notify",
+      "github:MasuRii/opencode-smart-voice-notify"
+    ]
+  },
+  {
+    "productId": "subtask2",
+    "displayName": "Subtask2",
+    "repoUrl": "https://github.com/spoons-and-mirrors/subtask2",
+    "tagline": "Orchestration system",
+    "description": "Extend opencode /commands into a powerful orchestration system with granular flow control.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "subtask2",
+      "github:spoons-and-mirrors/subtask2"
+    ]
+  },
+  {
+    "productId": "swarm-plugin",
+    "displayName": "Swarm Plugin",
+    "repoUrl": "https://github.com/joelhooks/opencode-swarm-plugin",
+    "tagline": "Swarm intelligence",
+    "description": "Swarm plugin for opencode enabling swarm-based agent coordination.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-swarm-plugin",
+      "github:joelhooks/opencode-swarm-plugin"
+    ]
+  },
+  {
+    "productId": "token-monitor",
+    "displayName": "Token Monitor",
+    "repoUrl": "https://github.com/Ainsley0917/opencode-token-monitor",
+    "tagline": "Token analysis & cost tracking with budgets, trends, and per-project analytics",
+    "description": "Track token usage (input/output/reasoning/cache), estimate costs, view daily trends with ASCII charts, set budget alerts, and export data. Supports per-agent breakdown, agent×model cross-analysis, and project-scoped analytics.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-token-monitor",
+      "github:Ainsley0917/opencode-token-monitor"
+    ]
+  },
+  {
+    "productId": "tokenscope",
+    "displayName": "Tokenscope",
+    "repoUrl": "https://github.com/ramtinJ95/opencode-tokenscope",
+    "tagline": "Token analysis & cost tracking",
+    "description": "Tokenscope, Comprehensive token usage analysis and cost tracking for opencode sessions.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-tokenscope",
+      "github:ramtinJ95/opencode-tokenscope"
+    ]
+  },
+  {
+    "productId": "toon-config",
+    "displayName": "toon-config",
+    "repoUrl": "https://github.com/mmynsted/opencode-toon-config-plugin",
+    "tagline": "Loads TOON based, AGENTS.toon rather than Markdown",
+    "description": "Use TOON based agent instructions. Command to analyize and improve agent instructions.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "toon-config",
+      "opencode-toon-config-plugin",
+      "github:mmynsted/opencode-toon-config-plugin"
+    ]
+  },
+  {
+    "productId": "tree-sitter-language-pack",
+    "displayName": "Tree-sitter Language Pack",
+    "repoUrl": "https://github.com/xberg-io/plugins",
+    "tagline": "Code intelligence for 300+ languages",
+    "description": "OpenCode plugin exposing tree-sitter-language-pack tools for parsing and extracting structure, imports, and symbols from 300+ languages.",
+    "tags": [
+      "tree-sitter",
+      "parsing",
+      "code",
+      "cli"
+    ],
+    "scope": [
+      "global",
+      "project"
+    ],
+    "candidates": [
+      "@xberg-io/opencode-xberg",
+      "plugins",
+      "github:xberg-io/plugins"
+    ]
+  },
+  {
+    "productId": "typeui",
+    "displayName": "TypeUI",
+    "repoUrl": "https://github.com/bergside/typeui",
+    "tagline": "Design systems, UI prompts, and layout variation guidance",
+    "description": "Open-source design layer for OpenCode that provides curated design skills, UI prompts, and layout variation guidance so agents can generate more consistent interfaces. Includes an <a href=\"https://www.typeui.sh/docs/guides/opencode\">OpenCode setup guide</a>.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "typeui",
+      "github:bergside/typeui"
+    ]
+  },
+  {
+    "productId": "ul-opencode-event",
+    "displayName": "ul-opencode-event",
+    "repoUrl": "https://gitee.com/ulthon/ul-opencode-event",
+    "tagline": "Multi-channel notifications (SMTP, DingTalk, Feishu) and token usage analytics",
+    "description": "Get notified when OpenCode sessions complete, error, or need your attention - via SMTP email, DingTalk robot, or Feishu robot.\n- Multi-channel: SMTP, DingTalk, Feishu, local JSONL file\n- Multi-level token analytics: message / session / total / project scopes\n- 74+ template variables with i18n support (zh/en)\n- Global + project config merge, automatic DB preload for crash recovery\n- Built-in CLI test tool",
+    "tags": [
+      "notifications",
+      "email",
+      "dingtalk",
+      "feishu",
+      "token-tracking",
+      "usage-analytics"
+    ],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "ul-opencode-event",
+      "github:https://gitee.com/ulthon/ul-opencode-event"
+    ]
+  },
+  {
+    "productId": "unmoji",
+    "displayName": "UNMOJI",
+    "repoUrl": "https://codeberg.org/bastiangx/opencode-unmoji",
+    "tagline": "Strip emojis from output",
+    "description": "A simple plugin that strips ALL emojis from agent outputs in Opencode.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-unmoji",
+      "github:https://codeberg.org/bastiangx/opencode-unmoji"
+    ]
+  },
+  {
+    "productId": "vibe-coding-slack-notifier",
+    "displayName": "Vibe Coding Slack Notifier",
+    "repoUrl": "https://github.com/Wangmerlyn/vibe-coding-slack-notifier",
+    "tagline": "Slack DM alerts for OpenCode task completion",
+    "description": "OpenCode-compatible Slack notifier plugin and toolkit for Codex, OpenCode, Claude Code, and Gemini workflows.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "vibe-coding-slack-notifier",
+      "github:Wangmerlyn/vibe-coding-slack-notifier"
+    ]
+  },
+  {
+    "productId": "wakatime",
+    "displayName": "WakaTime",
+    "repoUrl": "https://github.com/angristan/opencode-wakatime",
+    "tagline": "WakaTime integration",
+    "description": "WakaTime integration plugin for tracking coding activity in opencode sessions.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-wakatime",
+      "github:angristan/opencode-wakatime"
+    ]
+  },
+  {
+    "productId": "warcraft-notifications",
+    "displayName": "Warcraft Notifications",
+    "repoUrl": "https://github.com/pantheon-org/opencode-warcraft-notifications",
+    "tagline": "Fun sound notifications",
+    "description": "Notification plugin with Warcraft sounds for opencode completion alerts.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-warcraft-notifications",
+      "github:pantheon-org/opencode-warcraft-notifications"
+    ]
+  },
+  {
+    "productId": "with-context-mcp",
+    "displayName": "With Context MCP",
+    "repoUrl": "https://github.com/boxpositron/with-context-mcp",
+    "tagline": "Project-specific markdown notes",
+    "description": "MCP server for managing project-specific markdown notes with templates, batch edits, and ignore patterns.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "with-context-mcp",
+      "github:boxpositron/with-context-mcp"
+    ]
+  },
+  {
+    "productId": "worktree-memory-sync",
+    "displayName": "Worktree Memory Sync",
+    "repoUrl": "https://github.com/Edison-A-N/opencode-worktree-memory-sync",
+    "tagline": "Auto-sync memory to git worktrees",
+    "description": "Automatically copies .opencode/memory/ from the main repository into new git worktrees on session init. Detects worktrees via the .git file, resolves the main repo, and syncs memory files only when the destination is empty — so it never overwrites your changes.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-worktree-memory-sync",
+      "github:Edison-A-N/opencode-worktree-memory-sync"
+    ]
+  },
+  {
+    "productId": "xberg",
+    "displayName": "Xberg",
+    "repoUrl": "https://github.com/xberg-io/plugins",
+    "tagline": "Local document extraction for 97+ formats",
+    "description": "OpenCode plugin exposing xberg CLI tools for document extraction, MIME detection, and supported-format discovery.",
+    "tags": [
+      "documents",
+      "extraction",
+      "ocr",
+      "cli"
+    ],
+    "scope": [
+      "global",
+      "project"
+    ],
+    "candidates": [
+      "@xberg-io/opencode-xberg",
+      "plugins",
+      "github:xberg-io/plugins"
+    ]
+  },
+  {
+    "productId": "xquik",
+    "displayName": "Xquik",
+    "repoUrl": "https://github.com/Xquik-dev/x-twitter-scraper",
+    "tagline": "X/Twitter data skill & MCP server",
+    "description": "X/Twitter data skill — MCP server, REST API, 20 extraction tools. Works with Claude Code, Cursor, Codex, and 40+ agents.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "x-twitter-scraper",
+      "github:Xquik-dev/x-twitter-scraper"
+    ]
+  },
+  {
+    "productId": "zellij-namer",
+    "displayName": "Zellij Namer",
+    "repoUrl": "https://github.com/24601/opencode-zellij-namer",
+    "tagline": "Auto-rename Zellij sessions",
+    "description": "Keeps your Zellij session name in sync with your work.",
+    "tags": [],
+    "scope": [
+      "global"
+    ],
+    "candidates": [
+      "opencode-zellij-namer",
+      "github:24601/opencode-zellij-namer"
+    ]
+  }
+]

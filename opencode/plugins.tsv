@@ -1,0 +1,137 @@
+# productId	displayName	repoUrl	candidates(space-separated, tried in order)
+agent-memory	Agent Memory	https://github.com/joshuadavidthomas/opencode-agent-memory	opencode-agent-memory github:joshuadavidthomas/opencode-agent-memory
+agent-skills-jdt	Agent Skills (JDT)	https://github.com/joshuadavidthomas/opencode-agent-skills	opencode-agent-skills github:joshuadavidthomas/opencode-agent-skills
+antigravity-auth	Antigravity Auth	https://github.com/NoeFabris/opencode-antigravity-auth	opencode-antigravity-auth github:NoeFabris/opencode-antigravity-auth
+antigravity-multi-auth	Antigravity Multi-Auth	https://github.com/theblazehen/opencode-antigravity-multi-auth	opencode-antigravity-multi-auth github:theblazehen/opencode-antigravity-multi-auth
+autotitle	Autotitle	https://github.com/pawelma/opencode-autotitle	opencode-autotitle github:pawelma/opencode-autotitle
+background	Background	https://github.com/zenobi-us/opencode-background	opencode-background github:zenobi-us/opencode-background
+background-agents	Background Agents	https://github.com/kdcokenny/opencode-background-agents	opencode-background-agents github:kdcokenny/opencode-background-agents
+beads-plugin	Beads Plugin	https://github.com/joshuadavidthomas/opencode-beads	opencode-beads github:joshuadavidthomas/opencode-beads
+brhp	BRHP	https://github.com/ZanzyTHEbar/brhp	brhp github:ZanzyTHEbar/brhp
+cc-safety-net	CC Safety Net	https://github.com/kenryu42/claude-code-safety-net	claude-code-safety-net github:kenryu42/claude-code-safety-net
+cli-subagent-output	Subagent Reporter	https://github.com/raisbecka/opencode-subagent-output	opencode-subagent-output github:raisbecka/opencode-subagent-output
+command-inject	Command Inject	https://github.com/shihyuho/opencode-command-inject	opencode-command-inject github:shihyuho/opencode-command-inject
+context-analysis	Context Analysis	https://github.com/IgorWarzocha/Opencode-Context-Analysis-Plugin	opencode-context-analysis-plugin github:IgorWarzocha/Opencode-Context-Analysis-Plugin
+crawlberg	Crawlberg	https://github.com/xberg-io/plugins	@xberg-io/opencode-xberg plugins github:xberg-io/plugins
+crewbee	CrewBee	https://github.com/CrewBeeLab/CrewBee	crewbee github:CrewBeeLab/CrewBee
+devcontainers	Devcontainers	https://github.com/athal7/opencode-devcontainers	opencode-devcontainers github:athal7/opencode-devcontainers
+direnv	Direnv	https://github.com/simonwjackson/opencode-direnv	opencode-direnv github:simonwjackson/opencode-direnv
+dodo-payments	Dodo Payments	https://github.com/dodopayments/dodo-agent-plugin	dodo-agent-plugin github:dodopayments/dodo-agent-plugin
+dynamic-context-pruning	Dynamic Context Pruning	https://github.com/Tarquinen/opencode-dynamic-context-pruning	opencode-dynamic-context-pruning github:Tarquinen/opencode-dynamic-context-pruning
+ejentum-mcp	Ejentum	https://github.com/ejentum/ejentum-mcp	ejentum-mcp github:ejentum/ejentum-mcp
+envsitter-guard	Envsitter Guard	https://github.com/boxpositron/envsitter-guard	envsitter-guard github:boxpositron/envsitter-guard
+flowdeck	FlowDeck	https://github.com/DVNghiem/FlowDeck	flowdeck github:DVNghiem/FlowDeck
+forloop-planner	ForLoop Planner	https://github.com/forloop-cc/forloop-opencode-plugin-planner	forloop-opencode-plugin-planner github:forloop-cc/forloop-opencode-plugin-planner
+froggy	Froggy	https://github.com/smartfrog/opencode-froggy	opencode-froggy github:smartfrog/opencode-froggy
+gemini-auth	Gemini Auth	https://github.com/jenslys/opencode-gemini-auth	opencode-gemini-auth github:jenslys/opencode-gemini-auth
+google-ai-search	Google AI Search	https://github.com/IgorWarzocha/Opencode-Google-AI-Search-Plugin	opencode-google-ai-search-plugin github:IgorWarzocha/Opencode-Google-AI-Search-Plugin
+handoff	Handoff	https://github.com/joshuadavidthomas/opencode-handoff	opencode-handoff github:joshuadavidthomas/opencode-handoff
+harness-memory	Harness Memory	https://github.com/smc2315/harness-memory	harness-memory github:smc2315/harness-memory
+hiai-opencode	hiai-opencode	https://github.com/HiAi-gg/hiai-opencode	hiai-opencode github:HiAi-gg/hiai-opencode
+honcho	Honcho	https://github.com/plastic-labs/opencode-honcho	opencode-honcho github:plastic-labs/opencode-honcho
+html-to-markdown	HTML to Markdown	https://github.com/xberg-io/plugins	@xberg-io/opencode-xberg plugins github:xberg-io/plugins
+kibi-opencode	kibi-opencode	https://github.com/Looted/kibi	kibi-opencode kibi github:Looted/kibi
+kilo-auth	Kilo Gateway Auth	https://github.com/JungHoonGhae/opencode-kilo-auth	opencode-kilo-auth github:JungHoonGhae/opencode-kilo-auth
+lemma	Lemma	https://github.com/xenitV1/lemma	lemma github:xenitV1/lemma
+liter-llm	liter-llm	https://github.com/xberg-io/plugins	@xberg-io/opencode-xberg plugins github:xberg-io/plugins
+magic-context	Magic Context	https://github.com/cortexkit/opencode-magic-context	opencode-magic-context github:cortexkit/opencode-magic-context
+managed-skills	Manage Skills	https://github.com/Randroids-Dojo/ManageSkills	manageskills github:Randroids-Dojo/ManageSkills
+micode	Micode	https://github.com/vtemian/micode	micode github:vtemian/micode
+model-announcer	Model Announcer	https://github.com/ramarivera/opencode-model-announcer	opencode-model-announcer github:ramarivera/opencode-model-announcer
+morph-fast-apply	Morph Fast Apply	https://github.com/JRedeker/opencode-morph-fast-apply	opencode-morph-fast-apply github:JRedeker/opencode-morph-fast-apply
+oc-mnemoria	oc-mnemoria	https://github.com/one-bit/oc-mnemoria	oc-mnemoria github:one-bit/oc-mnemoria
+oh-my-opencode	Oh My Opencode	https://github.com/code-yeongyu/oh-my-opencode	oh-my-opencode github:code-yeongyu/oh-my-opencode
+oh-my-opencode-slim	Oh My Opencode Slim	https://github.com/alvinunreal/oh-my-opencode-slim	oh-my-opencode-slim github:alvinunreal/oh-my-opencode-slim
+omniroute-auth	Omniroute Auth	https://github.com/Alph4d0g/opencode-omniroute-auth	opencode-omniroute-auth github:Alph4d0g/opencode-omniroute-auth
+open-conclave	Open Conclave	https://github.com/martinzokov/open-conclave	open-conclave github:martinzokov/open-conclave
+open-dynamic-workflows	Open Dynamic Workflows	https://github.com/Suraj1235/open-dynamic-workflows	open-dynamic-workflows github:Suraj1235/open-dynamic-workflows
+open-plan-annotator	open-plan-annotator	https://github.com/ndom91/open-plan-annotator	open-plan-annotator github:ndom91/open-plan-annotator
+openai-codex-auth	OpenAI Codex Auth	https://github.com/numman-ali/opencode-openai-codex-auth	opencode-openai-codex-auth github:numman-ali/opencode-openai-codex-auth
+opencode-adaptive-thinking	OpenCode Adaptive Thinking	https://github.com/ian-pascoe/opencode-adaptive-thinking	opencode-adaptive-thinking github:ian-pascoe/opencode-adaptive-thinking
+opencode-agent-identity	Agent Identity	https://github.com/gotgenes/opencode-agent-identity	opencode-agent-identity github:gotgenes/opencode-agent-identity
+opencode-agent-tmux	OpenCode Agent Tmux	https://github.com/AnganSamadder/opencode-agent-tmux	opencode-agent-tmux github:AnganSamadder/opencode-agent-tmux
+opencode-agents-sidebar	Opencode Agents Sidebar	https://github.com/Mark1708/opencode-agents-sidebar	opencode-agents-sidebar github:Mark1708/opencode-agents-sidebar
+opencode-arise	@bluelovers/opencode-arise	https://github.com/bluelovers/opencode-arise	@bluelovers/opencode-arise opencode-arise github:bluelovers/opencode-arise
+opencode-ascii	opencode-ascii	https://github.com/d3vv3/opencode-ascii	opencode-ascii github:d3vv3/opencode-ascii
+opencode-bmad-workflow	opencode-bmad-workflow	https://github.com/Alex-stack-cell/opencode-bmad-workflow	opencode-bmad-workflow github:Alex-stack-cell/opencode-bmad-workflow
+opencode-canvas	Opencode Canvas	https://github.com/mailshieldai/opencode-canvas	opencode-canvas github:mailshieldai/opencode-canvas
+opencode-ccs-sync	Claude Code Switch (CCS) OpenCode Sync	https://github.com/JasonLandbridge/opencode-ccs-sync	opencode-ccs-sync github:JasonLandbridge/opencode-ccs-sync
+opencode-chromium-browser-plugin	OpenCode Chromium Browser Plugin	https://github.com/DJOCKER-FACE/opencode-chromium-browser-plugin	opencode-chromium-browser-plugin github:DJOCKER-FACE/opencode-chromium-browser-plugin
+opencode-claude-memory	OpenCode Claude Memory	https://github.com/kuitos/opencode-claude-memory	opencode-claude-memory github:kuitos/opencode-claude-memory
+opencode-ensemble	OpenCode Ensemble	https://github.com/hueyexe/opencode-ensemble	opencode-ensemble github:hueyexe/opencode-ensemble
+opencode-github-release	GitHub Release	https://github.com/amestsantim/opencode-github-release	opencode-github-release github:amestsantim/opencode-github-release
+opencode-goopspec	GoopSpec	https://github.com/hffmnnj/opencode-goopspec	opencode-goopspec github:hffmnnj/opencode-goopspec
+opencode-gpt-imagegen	GPT Imagegen	https://github.com/yuji-hatakeyama/opencode-gpt-imagegen	opencode-gpt-imagegen github:yuji-hatakeyama/opencode-gpt-imagegen
+opencode-hooks-plugin	Opencode Hooks Plugin	https://github.com/romain325/opencode-hooks-plugin	opencode-hooks-plugin github:romain325/opencode-hooks-plugin
+opencode-host-notify-bridge	Opencode Host Notify Bridge	https://github.com/Zaradacht/opencode-host-notify-bridge	opencode-host-notify-bridge github:Zaradacht/opencode-host-notify-bridge
+opencode-ignore	Opencode Ignore	https://github.com/lgladysz/opencode-ignore	opencode-ignore github:lgladysz/opencode-ignore
+opencode-litellm	Opencode LiteLLM	https://github.com/yuseferi/opencode-litellm	opencode-litellm github:yuseferi/opencode-litellm
+opencode-log-sanitizer	Opencode Log Sanitizer	https://github.com/errhythm/opencode-log-sanitizer	opencode-log-sanitizer github:errhythm/opencode-log-sanitizer
+opencode-mem	Opencode Mem	https://github.com/tickernelz/opencode-mem	opencode-mem github:tickernelz/opencode-mem
+opencode-mission-control	OpenCode Mission Control	https://github.com/nigel-dev/opencode-mission-control	opencode-mission-control github:nigel-dev/opencode-mission-control
+opencode-models-discovery	Opencode Models Discovery	https://github.com/yuhp/opencode-models-discovery	opencode-models-discovery github:yuhp/opencode-models-discovery
+opencode-mystatus	opencode-mystatus	https://github.com/vbgate/opencode-mystatus	opencode-mystatus github:vbgate/opencode-mystatus
+opencode-notify	Opencode Notify	https://github.com/kdcokenny/opencode-notify	opencode-notify github:kdcokenny/opencode-notify
+opencode-ntfy.sh	OpenCode ntfy.sh	https://github.com/lannuttia/opencode-ntfy.sh	opencode-ntfy.sh github:lannuttia/opencode-ntfy.sh
+opencode-personality	opencode-personality	https://github.com/joostvanwollingen/opencode-personality	opencode-personality github:joostvanwollingen/opencode-personality
+opencode-plan-manager	OpenCode Plan Manager	https://github.com/yurihbm/opencode-plan-manager	opencode-plan-manager github:yurihbm/opencode-plan-manager
+opencode-plugin-openspec	OpenSpec	https://github.com/Octane0411/opencode-plugin-openspec	opencode-plugin-openspec github:Octane0411/opencode-plugin-openspec
+opencode-plugin-otel	opencode-plugin-otel	https://github.com/DEVtheOPS/opencode-plugin-otel	opencode-plugin-otel github:DEVtheOPS/opencode-plugin-otel
+opencode-pr-signature	PR Auto-Signature	https://github.com/arttttt/opencode-pr-signature	opencode-pr-signature github:arttttt/opencode-pr-signature
+opencode-provider-alias	OpenCode Provider Alias	https://github.com/baranwang/opencode-provider-alias	opencode-provider-alias github:baranwang/opencode-provider-alias
+opencode-quota	Opencode Quota	https://github.com/slkiser/opencode-quota	opencode-quota github:slkiser/opencode-quota
+opencode-quotes-plugin	aerovato/opencode-quotes-plugin	https://github.com/aerovato/opencode-quotes-plugin	aerovato/opencode-quotes-plugin opencode-quotes-plugin github:aerovato/opencode-quotes-plugin
+opencode-rag	OpenCodeRAG	https://github.com/MrDoe/OpenCodeRAG	opencoderag github:MrDoe/OpenCodeRAG
+opencode-research-papers	Research Papers	https://github.com/saim-x/opencode-research-papers	opencode-research-papers github:saim-x/opencode-research-papers
+opencode-review	opencode-review	https://github.com/sun-praise/opencode-review	opencode-review github:sun-praise/opencode-review
+opencode-roadmap	Opencode Roadmap	https://github.com/IgorWarzocha/Opencode-Roadmap	opencode-roadmap github:IgorWarzocha/Opencode-Roadmap
+opencode-sessions	Opencode Sessions	https://github.com/malhashemi/opencode-sessions	opencode-sessions github:malhashemi/opencode-sessions
+opencode-short-term-memory	opencode-short-term-memory	https://github.com/andrejtonev/opencode-short-term-memory	opencode-short-term-memory github:andrejtonev/opencode-short-term-memory
+opencode-simple-notify	Simple Notify	https://github.com/Yusuzhan/opencode-simple-notify	opencode-simple-notify github:Yusuzhan/opencode-simple-notify
+opencode-snip	opencode-snip	https://github.com/VincentHardouin/opencode-snip	opencode-snip github:VincentHardouin/opencode-snip
+opencode-snippets	Opencode Snippets	https://github.com/JosXa/opencode-snippets	opencode-snippets github:JosXa/opencode-snippets
+opencode-swarm	OpenCode Swarm	https://github.com/zaxbysauce/opencode-swarm	opencode-swarm github:zaxbysauce/opencode-swarm
+opencode-synced	Opencode Synced	https://github.com/iHildy/opencode-synced	opencode-synced github:iHildy/opencode-synced
+opencode-system-prompt-logger	System Prompt Logger	https://github.com/tlinhart/opencode-system-prompt-logger	opencode-system-prompt-logger github:tlinhart/opencode-system-prompt-logger
+opencode-telemetry	Opencode Telemetry	https://github.com/agostinilabsrl/opencode-telemetry	opencode-telemetry github:agostinilabsrl/opencode-telemetry
+opencode-throughput	OpenCode Throughput	https://github.com/Howardzhangdqs/opencode-throughput	opencode-throughput github:Howardzhangdqs/opencode-throughput
+opencode-token-tracker	OpenCode Token Tracker	https://github.com/eserete/opencode-token-tracker	opencode-token-tracker github:eserete/opencode-token-tracker
+opencode-tts	Opencode TTS	https://github.com/StefanoChiodino/opencode-tts	opencode-tts github:StefanoChiodino/opencode-tts
+opencode-update-notifier	Opencode update notifier	https://github.com/tim-hilde/opencode-update-notifier	opencode-update-notifier github:tim-hilde/opencode-update-notifier
+opencode-usage-monitor	Opencode Usage Monitor	https://github.com/Mark1708/opencode-usage-monitor	opencode-usage-monitor github:Mark1708/opencode-usage-monitor
+opencode-visualizer	Opencode Visualizer	https://github.com/psinetron/opencode-visualiser	opencode-visualiser github:psinetron/opencode-visualiser
+opencode-workaholic	OpenCode Workaholic	https://github.com/RoderickQiu/opencode-workaholic	opencode-workaholic github:RoderickQiu/opencode-workaholic
+opencode-workspace	Opencode Workspace	https://github.com/kdcokenny/opencode-workspace	opencode-workspace github:kdcokenny/opencode-workspace
+opencode-worktree	Opencode Worktree	https://github.com/kdcokenny/opencode-worktree	opencode-worktree github:kdcokenny/opencode-worktree
+openhax-codex	OpenHax Codex	https://github.com/open-hax/codex	codex github:open-hax/codex
+openskills	Openskills	https://github.com/numman-ali/openskills	openskills github:numman-ali/openskills
+optimal-model-temps	Optimal Model Temps	https://github.com/Lyapsus/opencode-optimal-model-temps	opencode-optimal-model-temps github:Lyapsus/opencode-optimal-model-temps
+orgx-opencode-plugin	OrgX OpenCode Plugin	https://github.com/useorgx/orgx-opencode-plugin	orgx-opencode-plugin github:useorgx/orgx-opencode-plugin
+pilot	Pilot	https://github.com/athal7/opencode-pilot	opencode-pilot github:athal7/opencode-pilot
+plannotator	Plannotator	https://github.com/backnotprop/plannotator	plannotator github:backnotprop/plannotator
+plugin-template	Plugin Template	https://github.com/zenobi-us/opencode-plugin-template	opencode-plugin-template github:zenobi-us/opencode-plugin-template
+pocket-universe	Pocket Universe	https://github.com/spoons-and-mirrors/pocket-universe	pocket-universe github:spoons-and-mirrors/pocket-universe
+ralph-wiggum	Ralph Wiggum	https://github.com/Th0rgal/opencode-ralph-wiggum	opencode-ralph-wiggum github:Th0rgal/opencode-ralph-wiggum
+ring-a-bell-example	Ring a Bell Example	https://gist.github.com/ahosker/267f375a65378bcb9a867fd9a195db1e	267f375a65378bcb9a867fd9a195db1e github:ahosker/267f375a65378bcb9a867fd9a195db1e
+semantic-anchors	Semantic Anchors	https://github.com/JensGrote/opencode-semantic-anchors	opencode-semantic-anchors github:JensGrote/opencode-semantic-anchors
+shell-strategy	Shell Strategy	https://github.com/JRedeker/opencode-shell-strategy	opencode-shell-strategy github:JRedeker/opencode-shell-strategy
+simple-memory	Simple Memory	https://github.com/cnicolov/opencode-plugin-simple-memory	opencode-plugin-simple-memory github:cnicolov/opencode-plugin-simple-memory
+smart-title	Smart Title	https://github.com/Tarquinen/opencode-smart-title	opencode-smart-title github:Tarquinen/opencode-smart-title
+smart-voice-notify	Smart Voice Notify	https://github.com/MasuRii/opencode-smart-voice-notify	opencode-smart-voice-notify github:MasuRii/opencode-smart-voice-notify
+subtask2	Subtask2	https://github.com/spoons-and-mirrors/subtask2	subtask2 github:spoons-and-mirrors/subtask2
+swarm-plugin	Swarm Plugin	https://github.com/joelhooks/opencode-swarm-plugin	opencode-swarm-plugin github:joelhooks/opencode-swarm-plugin
+token-monitor	Token Monitor	https://github.com/Ainsley0917/opencode-token-monitor	opencode-token-monitor github:Ainsley0917/opencode-token-monitor
+tokenscope	Tokenscope	https://github.com/ramtinJ95/opencode-tokenscope	opencode-tokenscope github:ramtinJ95/opencode-tokenscope
+toon-config	toon-config	https://github.com/mmynsted/opencode-toon-config-plugin	toon-config opencode-toon-config-plugin github:mmynsted/opencode-toon-config-plugin
+tree-sitter-language-pack	Tree-sitter Language Pack	https://github.com/xberg-io/plugins	@xberg-io/opencode-xberg plugins github:xberg-io/plugins
+typeui	TypeUI	https://github.com/bergside/typeui	typeui github:bergside/typeui
+ul-opencode-event	ul-opencode-event	https://gitee.com/ulthon/ul-opencode-event	ul-opencode-event github:https://gitee.com/ulthon/ul-opencode-event
+unmoji	UNMOJI	https://codeberg.org/bastiangx/opencode-unmoji	opencode-unmoji github:https://codeberg.org/bastiangx/opencode-unmoji
+vibe-coding-slack-notifier	Vibe Coding Slack Notifier	https://github.com/Wangmerlyn/vibe-coding-slack-notifier	vibe-coding-slack-notifier github:Wangmerlyn/vibe-coding-slack-notifier
+wakatime	WakaTime	https://github.com/angristan/opencode-wakatime	opencode-wakatime github:angristan/opencode-wakatime
+warcraft-notifications	Warcraft Notifications	https://github.com/pantheon-org/opencode-warcraft-notifications	opencode-warcraft-notifications github:pantheon-org/opencode-warcraft-notifications
+with-context-mcp	With Context MCP	https://github.com/boxpositron/with-context-mcp	with-context-mcp github:boxpositron/with-context-mcp
+worktree-memory-sync	Worktree Memory Sync	https://github.com/Edison-A-N/opencode-worktree-memory-sync	opencode-worktree-memory-sync github:Edison-A-N/opencode-worktree-memory-sync
+xberg	Xberg	https://github.com/xberg-io/plugins	@xberg-io/opencode-xberg plugins github:xberg-io/plugins
+xquik	Xquik	https://github.com/Xquik-dev/x-twitter-scraper	x-twitter-scraper github:Xquik-dev/x-twitter-scraper
+zellij-namer	Zellij Namer	https://github.com/24601/opencode-zellij-namer	opencode-zellij-namer github:24601/opencode-zellij-namer
