@@ -8,7 +8,12 @@
 # контейнера в смонтированный том /data/studio (см. entrypoint.sh) —
 # так вся тяжёлая установка лежит на хостовом диске, а не в overlay докера.
 #
-FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04
+# База 12.6.3, а не 12.8: nvidia-container-toolkit проверяет тег CUDA образа
+# против драйвера, а драйверы ветки 565 (CUDA 12.7) образ 12.8 отклоняют.
+# torch cu128 при этом работает штатно: CUDA-рантайм едет внутри wheels
+# (minor-version compatibility, драйвер >= 525). Если будут проблемы —
+# сменить UNSLOTH_TORCH_INDEX_FAMILY на cu126.
+FROM nvidia/cuda:12.6.3-cudnn-devel-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
