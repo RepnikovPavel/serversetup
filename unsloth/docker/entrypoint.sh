@@ -16,11 +16,6 @@ if [ ! -x "$STUDIO_HOME/bin/unsloth" ]; then
     echo " (venv + torch ${UNSLOTH_TORCH_INDEX_FAMILY:-auto} + llama.cpp, займёт время)"
     echo "=============================================================="
     UNSLOTH_SKIP_AUTOSTART=1 UNSLOTH_PYTHON=3.12 sh /opt/unsloth-install/install.sh
-
-    # Studio требует пароль >= 8 символов (MIN_PASSWORD_LENGTH в storage.py).
-    # Ослабляем до 4, чтобы работал заданный UNSLOTH_STUDIO_PASSWORD=1234.
-    _storage_py=$(find "$STUDIO_HOME" -path '*/studio/backend/auth/storage.py' | head -1)
-    [ -n "$_storage_py" ] && sed -i 's/^MIN_PASSWORD_LENGTH = 8/MIN_PASSWORD_LENGTH = 4/' "$_storage_py"
 fi
 
 export PATH="$STUDIO_HOME/bin:$PATH"

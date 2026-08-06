@@ -35,8 +35,8 @@ UNSLOTH_HOST_DIR=/mnt/data1/unsloth CUDA_VARIANT=cu130 docker compose up -d --bu
 ```
 
 После запуска Studio доступна на `http://<host>:${STUDIO_HOST_PORT:-8000}`.
-Логин `unsloth`, пароль при первом старте — из `UNSLOTH_STUDIO_PASSWORD` (по умолчанию `1234`;
-для этого entrypoint при установке ослабляет политику минимальной длины пароля Studio с 8 до 4).
+Логин `unsloth`, пароль при первом старте — из `UNSLOTH_STUDIO_PASSWORD` (по умолчанию `12345678`,
+Studio требует минимум 8 символов).
 Смена пароля: в настройках UI или `docker exec <container> unsloth studio reset-password` (сгенерирует случайный).
 
 Либо один раз заполнить `.env` (см. `.env.example`) и запускать просто `docker compose up -d --build`.
