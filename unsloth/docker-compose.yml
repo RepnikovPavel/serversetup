@@ -1,0 +1,50 @@
+# Unsloth Studio в docker-compose.
+#
+# Путь до данных на хосте (модели, рабочая папка) НЕ зашит в файле —
+# передаётся переменной UNSLOTH_HOST_DIR в момент запуска:
+#
+#   UNSLOTH_HOST_DIR=/mnt/data1/unsloth docker compose up -d --build
+#
+# Вариант под другую CUDA:
+#
+#   UNSLOTH_HOST_DIR=/mnt/data1/unsloth CUDA_VARIANT=cu130 docker compose up -d --build
+#
+# Значения по умолчанию можно положить в .env рядом с этим файлом (см. .env.example).
+
+name: unsloth-studio
+
+services:
+  studio:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.${CUDA_VARIANT:-cu128}
+    image: unsloth-studio-custom:${CUDA_VARIANT:-cu128}
+    container_name: unsloth-studio-${CUDA_VARIANT:-cu128}
+    # privileged: install.sh/Studio не требуют sudo снаружи, но внутри
+    # контейнера всё запускается от root, плюс полный доступ к устройствам.
+    privileged: true
+    # deploy-синтаксис вместо `gpus: all` — работает и на старых docker compose (v2.6+)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    shm_size: 32gb
+    restart: unless-stopped
+    ports:
+      - "${STUDIO_HOST_PORT:-8000}:8000"
+    volumes:
+      # Сама установка Studio (venv, torch, llama.cpp) — ставится при первом
+      # запуске контейнера сюда, на хостовый диск, а не в overlay докера
+      - ${UNSLOTH_HOST_DIR:?укажи UNSLOTH_HOST_DIR, например UNSLOTH_HOST_DIR=/mnt/data1/unsloth}/studio:/data/studio
+      # Кэш uv (ускоряет переустановку/обновление стека)
+      - ${UNSLOTH_HOST_DIR:?укажи UNSLOTH_HOST_DIR, например UNSLOTH_HOST_DIR=/mnt/data1/unsloth}/uv_cache:/data/uv_cache
+      # HF-кэш с моделями (GGUF и safetensors), переживает пересоздание контейнера
+      - ${UNSLOTH_HOST_DIR:?укажи UNSLOTH_HOST_DIR, например UNSLOTH_HOST_DIR=/mnt/data1/unsloth}/hf_cache:/data/hf_cache
+      # Рабочая папка: датасеты, чекпоинты, экспорты
+      - ${UNSLOTH_HOST_DIR:?укажи UNSLOTH_HOST_DIR, например UNSLOTH_HOST_DIR=/mnt/data1/unsloth}/work:/data/work
+    environment:
+      # Токен Hugging Face для gated-моделей; пустой — только публичные
+      HF_TOKEN: ${HF_TOKEN:-}

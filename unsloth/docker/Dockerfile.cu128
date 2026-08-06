@@ -1,0 +1,46 @@
+# syntax=docker/dockerfile:1
+#
+# Unsloth Studio для RTX 4090 (CUDA 12.8, torch cu128).
+# Образ собирается с нуля, образ unsloth/unsloth не используется.
+#
+# ВАЖНО: install.sh здесь НЕ запускается. Образ = базовая среда + установщик.
+# Сама установка Studio (venv, torch, llama.cpp) происходит при ПЕРВОМ старте
+# контейнера в смонтированный том /data/studio (см. entrypoint.sh) —
+# так вся тяжёлая установка лежит на хостовом диске, а не в overlay докера.
+#
+FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Системные зависимости, которые install.sh иначе ставил бы через sudo apt.
+# Ставим заранее, чтобы установщик не пытался эскалировать права (мы и так root).
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        curl wget git ca-certificates \
+        build-essential libcurl4-openssl-dev pciutils \
+        python3.12 python3.12-venv \
+    && rm -rf /var/lib/apt/lists/*
+
+# uv ставится с GitHub releases: astral.sh (дефолтный источник uv в install.sh)
+# из части сетей недоступен.
+RUN curl -fsSL https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-unknown-linux-gnu.tar.gz \
+    | tar xz -C /usr/local/bin --strip-components=1
+
+# Пин индекса torch для установки на этапе первого запуска
+# (лист индекса: cpu, cu126, cu128, cu130, ...). Можно переопределить через
+# environment в compose, не пересобирая образ.
+ENV UNSLOTH_TORCH_INDEX_FAMILY=cu128 \
+    UNSLOTH_STUDIO_HOME=/data/studio \
+    UV_CACHE_DIR=/data/uv_cache \
+    HF_HOME=/data/hf_cache \
+    HF_HUB_ENABLE_HF_TRANSFER=1
+
+# Завендоренный официальный установщик Unsloth Studio.
+# Лежит в репо, а не тянется с unsloth.ai: во-первых, unsloth.ai недоступен
+# из части сетей (IPv6-only DNS), во-вторых, установка воспроизводима.
+COPY docker/install.sh /opt/unsloth-install/install.sh
+COPY docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+WORKDIR /data/work
+EXPOSE 8000
+ENTRYPOINT ["/entrypoint.sh"]
