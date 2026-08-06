@@ -48,3 +48,6 @@ services:
     environment:
       # Токен Hugging Face для gated-моделей; пустой — только публичные
       HF_TOKEN: ${HF_TOKEN:-}
+      # Пароль админа Studio при ПЕРВОМ старте (потом меняется в настройках UI).
+      # По умолчанию 1234 — слабый, держать только в частной сети.
+      UNSLOTH_STUDIO_PASSWORD: ${UNSLOTH_STUDIO_PASSWORD:-1234}
