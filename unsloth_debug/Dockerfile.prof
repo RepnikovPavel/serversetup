@@ -12,10 +12,17 @@ ARG BASE_IMAGE=unsloth-studio-custom:cu128
 FROM $BASE_IMAGE
 
 ARG NSYS_DEB_URL="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/nsight-systems-2023.2.3_2023.2.3.1004-1_amd64.deb"
+# libtinfo5 нужен nsys 2023.2.3, но отсутствует в новых базовых образах
+# (ubuntu 24.04) — тянем deb из jammy-пула.
+ARG TINFO_DEB_URL="http://security.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2ubuntu0.2_amd64.deb"
 
 RUN curl -fsSL -o /tmp/nsys.deb "$NSYS_DEB_URL" \
-    && apt-get update && apt-get install -y /tmp/nsys.deb \
-    && rm /tmp/nsys.deb && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && curl -fsSL -o /tmp/libtinfo5.deb "$TINFO_DEB_URL" \
+    && apt-get update \
+    && (apt-get install -y libtinfo5 || apt-get install -y /tmp/libtinfo5.deb) \
+    && apt-get install -y /tmp/nsys.deb \
+    && rm -f /tmp/nsys.deb /tmp/libtinfo5.deb \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV PATH="/opt/nvidia/nsight-systems/2023.2.3/target-linux-x64:${PATH}"
 
