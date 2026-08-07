@@ -37,6 +37,7 @@ docker exec -d llama-dbg-run bash -c "
     /build/llama-cuda/bin/llama-server \
         -m '$MODEL_GGUF' \
         --port 8080 --alias deepseek-debug \
+        --host 0.0.0.0 --port 8080 --alias deepseek-debug \
         -c $CTX --parallel 1 --flash-attn on --fit on --jinja \
         > /dbg/server.log 2>&1"
 
