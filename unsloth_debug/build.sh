@@ -4,7 +4,7 @@
 set -euo pipefail
 
 LLAMA_FORK_DIR=${LLAMA_FORK_DIR:-$HOME/deepbench/llama.cpp}
-BUILD_HOST_DIR=${BUILD_HOST_DIR:-/mnt/data1/PMRepnikov/deepbench_build}
+BUILD_HOST_DIR=${BUILD_HOST_DIR:-/mnt/data1/deepbench/build}
 DEBUG_IMAGE=${DEBUG_IMAGE:-unsloth-studio-custom:cu128}
 BUILD_JOBS=${BUILD_JOBS:-32}   # сервер общий — не все 80 ядер
 CUDA_ARCHS=${CUDA_ARCHS:-89}   # sm_89 = RTX 4090

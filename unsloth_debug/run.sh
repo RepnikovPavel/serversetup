@@ -4,8 +4,8 @@
 # Вернуть stock: ./stop.sh && docker start unsloth-studio-cu128
 set -euo pipefail
 
-BUILD_HOST_DIR=${BUILD_HOST_DIR:-/mnt/data1/PMRepnikov/deepbench_build}
-RUN_HOST_DIR=${RUN_HOST_DIR:-/mnt/data1/PMRepnikov/deepbench_run}
+BUILD_HOST_DIR=${BUILD_HOST_DIR:-/mnt/data1/deepbench/build}
+RUN_HOST_DIR=${RUN_HOST_DIR:-/mnt/data1/deepbench/run}
 UNSLOTH_HOST_DIR=${UNSLOTH_HOST_DIR:-/mnt/data1/unsloth}
 DEBUG_IMAGE=${DEBUG_IMAGE:-unsloth-studio-custom:cu128}
 DEBUG_PORT=${DEBUG_PORT:-18222}

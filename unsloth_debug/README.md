@@ -28,8 +28,8 @@ unsloth_debug/
 | Переменная | Default | Назначение |
 |---|---|---|
 | `LLAMA_FORK_DIR` | `~/deepbench/llama.cpp` | локальный клон форка (ветка deepbench) |
-| `BUILD_HOST_DIR` | `/mnt/data1/PMRepnikov/deepbench_build` | куда собирать (не на root-разделе — он маленький) |
-| `RUN_HOST_DIR` | `/mnt/data1/PMRepnikov/deepbench_run` | логи и trace.jsonl |
+| `BUILD_HOST_DIR` | `/mnt/data1/deepbench/build` | куда собирать (не на root-разделе — он маленький) |
+| `RUN_HOST_DIR` | `/mnt/data1/deepbench/run` | логи и trace.jsonl |
 | `UNSLOTH_HOST_DIR` | `/mnt/data1/unsloth` | hf_cache с моделями (как у stock) |
 | `DEBUG_IMAGE` | `unsloth-studio-custom:cu128` | образ с nvcc (собирается в `unsloth/`) |
 | `DEBUG_PORT` | `18222` | хост-порт debug llama-server |
