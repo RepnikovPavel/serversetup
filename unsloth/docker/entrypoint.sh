@@ -20,5 +20,15 @@ fi
 
 export PATH="$STUDIO_HOME/bin:$PATH"
 
+# Лаунчер unsloth (с ~2026.8.7) трактует UNSLOTH_STUDIO_PASSWORD как --password
+# и ПАДАЕТ на старте, если пароль уже инициализирован ("--password only sets the
+# initial password"). Пароль нужен только при самом первом запуске — когда auth.db
+# ещё нет. После инициализации переменную убираем, иначе контейнер уходит в
+# restart-луп.
+if [ -f "$STUDIO_HOME/auth/auth.db" ] && [ -n "${UNSLOTH_STUDIO_PASSWORD:-}" ]; then
+    echo "auth.db уже есть — UNSLOTH_STUDIO_PASSWORD игнорируется (смена пароля: UI или unsloth studio reset-password)"
+    unset UNSLOTH_STUDIO_PASSWORD
+fi
+
 # Studio слушает на всех интерфейсах — снаружи пробрасывается порт хоста.
 exec unsloth studio -H 0.0.0.0 -p "${STUDIO_PORT:-8000}"
