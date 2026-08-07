@@ -1,0 +1,23 @@
+# Профилировочный образ: debug-стек + PINNED nsys.
+# Версия nsys жёстко фиксируется и совпадает с viewer-образом на localhost
+# (deepseekbench/docker/Dockerfile.nsys) — иначе .nsys-rep не открывается
+# (новый формат репорта старым GUI не парсится).
+#
+# Сборка (на сервере 2x4090):
+#   docker build -t unsloth-debug-prof:nsys2023.2.3.1004 -f Dockerfile.prof .
+#
+# BASE_IMAGE — образ с nvcc/стеком (собирается в ../unsloth).
+
+ARG BASE_IMAGE=unsloth-studio-custom:cu128
+FROM $BASE_IMAGE
+
+ARG NSYS_DEB_URL="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/nsight-systems-2023.2.3_2023.2.3.1004-1_amd64.deb"
+
+RUN curl -fsSL -o /tmp/nsys.deb "$NSYS_DEB_URL" \
+    && apt-get update && apt-get install -y /tmp/nsys.deb \
+    && rm /tmp/nsys.deb && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ENV PATH="/opt/nvidia/nsight-systems/2023.2.3/target-linux-x64:${PATH}"
+
+# страховка: сборка падает, если версия не та
+RUN nsys --version | grep -F "2023.2.3.1004"
