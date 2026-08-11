@@ -22,7 +22,7 @@ PROF_IMAGE=${PROF_IMAGE:-unsloth-debug-prof:nsys2025.6.3.541}
 DEBUG_PORT=${DEBUG_PORT:-18222}
 MAX_TOKENS=${MAX_TOKENS:-32}
 CTX=${CTX:-4096}
-NCU_LAUNCHES=${NCU_LAUNCHES:-30}
+NCU_LAUNCHES=${NCU_LAUNCHES:-10}
 # decode-целевые ядра (по nsys cuda_gpu_kern_sum топ по времени); большие
 # prompt-GEMM (mul_mat_q) исключены — они дороги в replay и не decode-hotpath
 NCU_KERNELS=${NCU_KERNELS:-regex:mul_mat_vec|flash_attn|rms_norm|quantize|get_rows|argsort|rope|soft_max}
