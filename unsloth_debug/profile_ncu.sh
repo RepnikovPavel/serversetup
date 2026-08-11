@@ -25,11 +25,12 @@ CTX=${CTX:-4096}
 NCU_LAUNCHES=${NCU_LAUNCHES:-24}
 NCU_KERNELS=${NCU_KERNELS:-regex:mul_mat}
 CONTAINER=llama-dbg-ncu
-# DeepSeek-V4-Flash UD-IQ3_XXS (~104 ГБ) — меньшая квантизация, влезает в RAM
-# сервера без swap-thrash. Урок 2026-08-07: Q4_K_XL (144 ГБ) под ncu с
-# --load-mode none уронил сервер (OOM/SIGKILL). Шарды: $DSB_RUN_DIR/models/IQ3_XXS
-# (00001-00003 — симлинки в hf_cache, 00004 докачан отдельно).
-# Полный Q4_K_XL задавать явно через MODEL_GGUF=...
+# DeepSeek-V4-Flash UD-IQ3_XXS (~104 ГБ) — меньшая квантизация. Грузим с
+# --load-mode none (модель честно занимает RAM, без mmap page-cache) — для
+# 104 ГБ это безопасно (сервер 251 ГБ). Урок 2026-08-07: Q4_K_XL (144 ГБ) с
+# --load-mode none уронил сервер (OOM/SIGKILL) — с полной моделью флаг не
+# использовать. Шарды: $DSB_RUN_DIR/models/IQ3_XXS (00001-00003 — симлинки в
+# hf_cache, 00004 докачан отдельно). Q4_K_XL задавать явно через MODEL_GGUF=...
 MODEL_GGUF=${MODEL_GGUF:-/dbg/models/IQ3_XXS/DeepSeek-V4-Flash-0731-UD-IQ3_XXS-00001-of-00004.gguf}
 
 CMD=${1:?usage: profile_ncu.sh start|bench|stop|fetch}
@@ -49,8 +50,8 @@ start)
         --launch-count $NCU_LAUNCHES --set full \
         /build/llama-cuda-lineinfo/bin/llama-server \
         -m $MODEL_GGUF --host 0.0.0.0 --port 8080 --alias deepseek-ncu \
-        -c $CTX --parallel 1 --flash-attn on --fit on --jinja > /dbg/server-ncu.log 2>&1'"
-    echo "загрузка модели; жду готовности..."
+        -c $CTX --parallel 1 --flash-attn on --fit on --jinja --load-mode none > /dbg/server-ncu.log 2>&1'"
+    echo "загрузка модели (--load-mode none: 104 ГБ честно в RAM — ждать дольше обычного)..."
     until ssh "$DSB_SSH" "curl -s -m 3 http://127.0.0.1:$DEBUG_PORT/health | grep -q '\"ok\"'" 2>/dev/null; do sleep 15; done
     echo "READY: порт $DEBUG_PORT на сервере"
     ;;
