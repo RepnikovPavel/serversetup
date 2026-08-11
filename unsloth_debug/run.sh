@@ -38,7 +38,7 @@ docker exec -d llama-dbg-run bash -c "
         -m '$MODEL_GGUF' \
         --port 8080 --alias deepseek-debug \
         --host 0.0.0.0 --port 8080 --alias deepseek-debug \
-        -c $CTX --parallel 1 --flash-attn on --fit on --jinja \
+        -c $CTX --parallel 1 --flash-attn on --fit on --jinja --load-mode none \
         > /dbg/server.log 2>&1"
 
 echo "запущен: http://127.0.0.1:$DEBUG_PORT  (лог: $RUN_HOST_DIR/server.log)"

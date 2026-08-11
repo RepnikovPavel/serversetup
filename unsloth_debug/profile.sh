@@ -13,12 +13,11 @@ DSB_SSH=${DSB_SSH:?задай DSB_SSH (user@host сервера 2x4090), см. ~
 DSB_BUILD_DIR=${DSB_BUILD_DIR:-/mnt/data1/deepbench/build}
 DSB_RUN_DIR=${DSB_RUN_DIR:-/mnt/data1/deepbench/run}
 UNSLOTH_HOST_DIR=${UNSLOTH_HOST_DIR:-/mnt/data1/unsloth}
-PROF_IMAGE=${PROF_IMAGE:-unsloth-debug-prof:nsys2023.2.3.1004}
+PROF_IMAGE=${PROF_IMAGE:-unsloth-debug-prof:nsys2025.6.3.541}
 DEBUG_PORT=${DEBUG_PORT:-18222}
 MAX_TOKENS=${MAX_TOKENS:-2048}
 CTX=${CTX:-4096}
 CONTAINER=llama-dbg-prof
-NSYS=/opt/nvidia/nsight-systems/2023.2.3/target-linux-x64/nsys
 MODEL_GGUF=${MODEL_GGUF:-/data/hf_cache/hub/models--unsloth--DeepSeek-V4-Flash-0731-GGUF/snapshots/ca7936e6ef3f287be84cc748cb1870725c16d99a/UD-Q4_K_XL/DeepSeek-V4-Flash-0731-UD-Q4_K_XL-00001-of-00005.gguf}
 
 CMD=${1:?usage: profile.sh start|bench|stop|fetch}
@@ -35,11 +34,11 @@ start)
         -p $DEBUG_PORT:8080 \
         -e LLAMA_DEBUG_EXPERT_TRACE=/dbg/trace.jsonl \
         $PROF_IMAGE -c 'sleep infinity' >/dev/null \
-     && docker exec -d $CONTAINER bash -c '$NSYS profile -t cuda --cuda-graph-trace=node \
+     && docker exec -d $CONTAINER bash -c '"$(echo /opt/nvidia/nsight-systems/*/target-linux-x64/nsys)" profile -t cuda --cuda-graph-trace=node --sample=none --cpuctxsw=none \
         -o /dbg/deepseek_profile --force-overwrite true \
         /build/llama-cuda-lineinfo/bin/llama-server \
         -m $MODEL_GGUF --host 0.0.0.0 --port 8080 --alias deepseek-prof \
-        -c $CTX --parallel 1 --flash-attn on --fit on --jinja > /dbg/server-prof.log 2>&1'"
+        -c $CTX --parallel 1 --flash-attn on --fit on --jinja --load-mode none > /dbg/server-prof.log 2>&1'"
     echo "загрузка модели ~2 мин; жду готовности..."
     until ssh "$DSB_SSH" "curl -s -m 3 http://127.0.0.1:$DEBUG_PORT/health | grep -q '\"ok\"'" 2>/dev/null; do sleep 10; done
     echo "READY: http://$DSB_SSH#:$DEBUG_PORT (порт $DEBUG_PORT на сервере)"
