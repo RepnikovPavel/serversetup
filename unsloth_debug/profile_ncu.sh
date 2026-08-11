@@ -22,8 +22,17 @@ PROF_IMAGE=${PROF_IMAGE:-unsloth-debug-prof:nsys2025.6.3.541}
 DEBUG_PORT=${DEBUG_PORT:-18222}
 MAX_TOKENS=${MAX_TOKENS:-32}
 CTX=${CTX:-4096}
-NCU_LAUNCHES=${NCU_LAUNCHES:-24}
-NCU_KERNELS=${NCU_KERNELS:-regex:mul_mat}
+NCU_LAUNCHES=${NCU_LAUNCHES:-30}
+# decode-целевые ядра (по nsys cuda_gpu_kern_sum топ по времени); большие
+# prompt-GEMM (mul_mat_q) исключены — они дороги в replay и не decode-hotpath
+NCU_KERNELS=${NCU_KERNELS:-regex:mul_mat_vec|flash_attn|rms_norm|quantize|get_rows|argsort|rope|soft_max}
+# урезанный набор секций вместо --set full: меньше replay-проходов/оверхеда,
+# остаются SASS+source counters и все ключевые таблицы
+NCU_SECTIONS=${NCU_SECTIONS:---section SpeedOfLight --section MemoryWorkloadAnalysis --section MemoryWorkloadAnalysis_Tables --section SourceCounters --section WarpStateStats --section SchedulerStats --section InstructionStats --section Occupancy --section LaunchStats}
+# --cache-control none: не сбрасывать L2 между replay-проходами — иначе каждый
+# проход заново тянет ГБы весов из DRAM (в 5-10 раз медленнее на GEMV-ядрах).
+# Абсолютные L2-hit метрики чуть оптимистичнее, SASS/stalls/счётчики не меняются.
+NCU_EXTRA=${NCU_EXTRA:---cache-control none}
 CONTAINER=llama-dbg-ncu
 # DeepSeek-V4-Flash UD-IQ3_XXS (~104 ГБ) — меньшая квантизация. Грузим с
 # --load-mode none (модель честно занимает RAM, без mmap page-cache) — для
@@ -52,7 +61,7 @@ start)
      && docker exec -d $CONTAINER bash -c 'ncu --target-processes all \
         -o /dbg/deepseek_ncu --force-overwrite \
         --kernel-name-base demangled --kernel-name \"$NCU_KERNELS\" \
-        --launch-count $NCU_LAUNCHES --set full \
+        --launch-count $NCU_LAUNCHES $NCU_SECTIONS $NCU_EXTRA \
         --import-source yes --source-folders /deepbench/llama.cpp,$CUDA_INCLUDE_IN_IMAGE \
         /build/llama-cuda-lineinfo/bin/llama-server \
         -m $MODEL_GGUF --host 0.0.0.0 --port 8080 --alias deepseek-ncu \
