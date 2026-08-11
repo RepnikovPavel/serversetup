@@ -32,6 +32,10 @@ CONTAINER=llama-dbg-ncu
 # использовать. Шарды: $DSB_RUN_DIR/models/IQ3_XXS (00001-00003 — симлинки в
 # hf_cache, 00004 докачан отдельно). Q4_K_XL задавать явно через MODEL_GGUF=...
 MODEL_GGUF=${MODEL_GGUF:-/dbg/models/IQ3_XXS/DeepSeek-V4-Flash-0731-UD-IQ3_XXS-00001-of-00004.gguf}
+# исходники для --import-source (SASS<->source в отчёте навсегда):
+# дерево llama.cpp на сервере + CUDA headers уже есть внутри образа
+LLAMA_SRC=${LLAMA_SRC:-/home/pavel.repnikov/deepbench/llama.cpp}
+CUDA_INCLUDE_IN_IMAGE=${CUDA_INCLUDE_IN_IMAGE:-/usr/local/cuda-12.6/targets/x86_64-linux/include}
 
 CMD=${1:?usage: profile_ncu.sh start|bench|stop|fetch}
 
@@ -42,12 +46,14 @@ start)
     ssh "$DSB_SSH" "docker rm -f $CONTAINER >/dev/null 2>&1; docker run -d --name $CONTAINER --privileged --gpus all --entrypoint bash \
         -v $UNSLOTH_HOST_DIR/hf_cache:/data/hf_cache:ro \
         -v $DSB_BUILD_DIR:/build -v $DSB_RUN_DIR:/dbg \
+        -v $LLAMA_SRC:/deepbench/llama.cpp:ro \
         -p $DEBUG_PORT:8080 \
         $PROF_IMAGE -c 'sleep infinity' >/dev/null \
      && docker exec -d $CONTAINER bash -c 'ncu --target-processes all \
         -o /dbg/deepseek_ncu --force-overwrite \
         --kernel-name-base demangled --kernel-name \"$NCU_KERNELS\" \
         --launch-count $NCU_LAUNCHES --set full \
+        --import-source yes --source-folders /deepbench/llama.cpp,$CUDA_INCLUDE_IN_IMAGE \
         /build/llama-cuda-lineinfo/bin/llama-server \
         -m $MODEL_GGUF --host 0.0.0.0 --port 8080 --alias deepseek-ncu \
         -c $CTX --parallel 1 --flash-attn on --fit on --jinja --load-mode none > /dbg/server-ncu.log 2>&1'"
