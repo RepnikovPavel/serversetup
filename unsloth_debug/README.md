@@ -23,6 +23,34 @@ unsloth_debug/
 └── README.md
 ```
 
+## Где исходники и как запустить модель изолированно (без сервера)
+
+Патченые исходники инференса — форк `RepnikovPavel/llama.cpp`, ветка
+`deepbench`. Клоны: локально `~/llama.cpp` (checkout `deepbench`), на сервере
+`~/deepbench/llama.cpp`. Сама инструментация живёт НЕ в сервере, а в
+библиотеке: `src/llama-debug-stats.{h,cpp}` (env: `LLAMA_DEBUG_OP_COUNT`,
+`LLAMA_DEBUG_EXPERT_TRACE`) — HTTP-эндпоинт `/debug/stats` в
+`tools/server/server.cpp` это лишь способ прочитать счётчики у живого
+процесса. Сервер нужен бенчмаркам ради этого endpoint'а и стабильного
+процесса между замерами; для одиночного изолированного прогона он не нужен.
+
+Одиночный запуск в одном процессе (без HTTP), на сервере в контейнере:
+
+```bash
+# сборка (один раз): docker start llama-dbg-build &&
+#   docker exec llama-dbg-build bash -c 'cmake --build /build/llama-cuda-lineinfo --target llama-cli -j 32'
+docker exec llama-dbg-run bash -c 'LLAMA_DEBUG_EXPERT_TRACE=/dbg/trace.jsonl \
+  /build/llama-cuda-lineinfo/bin/llama-cli \
+  -m /dbg/models/IQ3_XXS/DeepSeek-V4-Flash-0731-UD-IQ3_XXS-00001-of-00004.gguf \
+  -p "write spconv kernel with nvidia cuda assembly and tensor cores" -n 512 \
+  -c 4096 --flash-attn on --fit on --jinja --load-mode none'
+```
+
+Чтение кода с нуля: `examples/simple/simple.cpp` в клоне форка — минимальный
+инференс в одном файле (init → tokenize → decode loop → sample), дальше по
+цепочке `src/llama.cpp` → `ggml/src/ggml-cuda/` (ядра) и
+`ggml/src/ggml-cpu/` (CPU-эксперты).
+
 ## Переменные (build.sh и run.sh)
 
 | Переменная | Default | Назначение |
