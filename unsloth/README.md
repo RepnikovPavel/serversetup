@@ -31,7 +31,7 @@ cd unsloth
 UNSLOTH_HOST_DIR=/mnt/data1/unsloth docker compose up -d --build
 
 # под 5090 / CUDA 13:
-UNSLOTH_HOST_DIR=/mnt/data1/unsloth CUDA_VARIANT=cu130 docker compose up -d --build
+UNSLOTH_HOST_DIR=/mnt/hdd1/unsloth_default CUDA_VARIANT=cu130 UNSLOTH_STUDIO_PASSWORD=12345678 STUDIO_HOST_PORT=48218 HF_TOKEN=... docker compose up -d --build
 ```
 
 После запуска Studio доступна на `http://<host>:${STUDIO_HOST_PORT:-8000}`.
