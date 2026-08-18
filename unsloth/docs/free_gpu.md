@@ -1,21 +1,22 @@
-# Освободить GPU без рестарта контейнера
+# Освободить GPU
 
-## 1. Выгрузить модель
+## 1. На сервере — одной командой, ключи не нужны
 
 ```sh
-curl -s -X POST http://127.0.0.1:<PORT>/api/inference/unload -H "Authorization: Bearer <API_KEY>" -H "Content-Type: application/json" -d '{"model_path":"unsloth/Qwen3.8-27B-GGUF"}'
+bash free_gpu.sh
 ```
 
-## 2. Проверить VRAM
+## 2. Проверить
 
 ```sh
 nvidia-smi --query-gpu=memory.used --format=csv,noheader
 ```
 
-## 3. Если не помогло
+## 3. Издалека по API (нужен ключ)
 
 ```sh
-docker exec unsloth-studio-cu128 pkill -f llama-server
+curl -s -X POST http://<SERVER_IP>:<PORT>/api/inference/unload -H "Authorization: Bearer <API_KEY>" -H "Content-Type: application/json" -d '{"model_path":"unsloth/Qwen3.8-27B-GGUF"}'
 ```
 
-Автовыгрузка по простою: `serve_qwen38_27b_gguf.md`, шаг 2 (`auto_unload_idle_seconds`).
+Автовыгрузка по простою (30 мин) уже включена скриптом `setup.sh`
+(`auto_unload_idle_seconds=1800`).
