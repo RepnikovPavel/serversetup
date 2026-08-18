@@ -40,14 +40,21 @@
 
 ### 1.2. Чем форк отличается от `ggml-org/llama.cpp`
 
-README форка идентичен апстриму — отличия видны по коммитам и PR. В форке есть механизм **«pins»** (`pr-set.json`, PR #21): в сборки вливаются PR, которых ещё нет в апстриме:
+README форка идентичен апстриму — отличия видны по коммитам и PR. В форке есть механизм **«pins»** (`scripts/unsloth/pr-set.json`, введён в PR #21 форка): nightly-пребилды собираются как «апстримный тег + запиненные коммиты из PR, которых ещё нет в апстриме» (цитата из `_doc` самого pr-set.json: «the tree is the upstream tag + pins»). Проверено на 2026-08-18 по актуальному pr-set.json — запинены:
 
-- собственные квант-типы ниже IQ1_S — `IQ1_XS`, `IQ1_XXS`, `IQ1_XXXS` (PR #61 форка);
-- фикс семплера (penalties по token id, PR #95/#96);
-- новые архитектуры **раньше апстрима**: Kimi-K3 (+ vision tower MoonViT-3d), MiniMax-M3, DiffusionGemma;
-- фиксы конвертации: Qwen3-VL, Qwen3-Next, MiniMax-M2, Mistral-Large MoE, «Fix qwen3moe experts save» и др.
+- `ggml-org#24423` (DiffusionGemma, open) и `ggml-org#25731` (архитектура TML Inkling, open) — апстримные PR, влитые в ночные сборки до мержа в апстрим;
+- `unslothai#70` (Kimi-K3: vision tower MoonViT-3d, open);
+- `unslothai#91` (экспериментальные квант-типы `IQ1_XS/IQ1_XXS/IQ1_XXXS`, см. ниже);
+- `unslothai#95` (семплер: penalties по token id, open).
+
+Про «собственные квант-типы» — точная картина (проверено по коду, см. раздел 9):
+
+- `IQ1_XS/IQ1_XXS/IQ1_XXXS` реализованы в PR #61 (open) и #91 форка; #91 влит **не в master, а в побочную ветку** `iq1-narrow-upstream-base` (2026-08-11), и его коммит запинен в nightly;
+- при этом в `ggml.h` **и** апстрима, **и** master форка, **и** релизного тега `b10360-mix-87da1a2` этих типов нет — enum содержит только `IQ1_S`/`IQ1_M`. Т.е. на момент проверки шипнутые пребилды этих типов не содержат (пин либо применился неудачно, либо появился после среза тега);
+- главное: **ни одна опубликованная GGUF на huggingface.co/unsloth эти типы не использует** (проверено листингом файлов DeepSeek-V3.1-GGUF, Qwen3-Coder-30B-A3B-Instruct-GGUF, gemma-3-27b-it-GGUF — только стандартные типы).
   - https://github.com/unslothai/llama.cpp/pull/21
   - https://github.com/unslothai/llama.cpp/pull/61
+  - https://github.com/unslothai/llama.cpp/pull/91
 
 При этом фиксы Unsloth **идут и в апстрим** (автор danielhanchen): Llama 4 RoPE fix (ggml-org#12889), Llama 4 conversion fix (#14311), Gemma2 `query_pre_attn_scalar` (#8444), «Add Unsloth exporting to GGUF in tools» (#17411).
 - https://github.com/ggml-org/llama.cpp/pull/12889
@@ -167,7 +174,7 @@ Studio ищет их именно в таком порядке (`studio/backend/
 
 Единственные оговорки:
 
-- форк может содержать квант-типы (`IQ1_XXS` и др.), которых ещё нет в апстриме — GGUF, квантованный такими типами, **не прочитается** старым/стоковым llama.cpp;
+- экспериментальные квант-типы `IQ1_XS/IQ1_XXS/IQ1_XXXS` живут в отдельной ветке форка и пинах nightly (см. 1.2 и 9): в master форка и в текущих пребилдах их нет, опубликованные модели их не используют. Но если вы **сами** квантуете модель этими типами на сборке с патчем — такой GGUF стоковый llama.cpp не прочитает;
 - для новых архитектур форк обновляется раньше апстрима — при переходе на свой llama.cpp следите за свежестью версии.
 
 ---
@@ -372,6 +379,51 @@ cmake --build llama.cpp/build --config Release -j --target llama-server llama-cl
 ### 8.3. «Две GPU-ноды под одну большую модель»
 
 `ggml-rpc-server` на обеих + `llama-server --rpc node1:50052,node2:50052` на главной; клиенты подключаются к главной ноде обычным OpenAI API.
+
+---
+
+## 9. Проверка фактов: разбор кажущегося противоречия про квант-типы
+
+**Кажущееся противоречие:** «у Unsloth свои типы квантизации» и одновременно «их GGUF работают на стоковом llama.cpp». Оба утверждения верны, потому что относятся к **разным артефактам**. Проверка по первоисточникам (2026-08-18):
+
+1. **В апстриме этих типов нет.** Enum в `ggml/include/ggml.h` master-ветки `ggml-org/llama.cpp`: `GGML_TYPE_IQ1_S = 19`, `GGML_TYPE_IQ1_M = 29` — и всё, никаких `IQ1_XS/XXS/XXXS` (`GGML_TYPE_COUNT = 43`).
+
+2. **В master форка их тоже нет** — `ggml.h` форка идентичен апстриму в этой части. Реализация живёт в PR #61 (open) и #91 (merged 2026-08-11, но **в побочную ветку** `iq1-narrow-upstream-base`, не в master): ~30 файлов, включая `ggml-quants.c`, CUDA-шаблоны `mmq-instance-iq1_xs.cu` и т.д.
+
+3. **В текущих пребилдах их (пока) нет.** Релизный тег `b10360-mix-87da1a2` (2026-08-11) содержит пин коммита из #91 в `scripts/unsloth/pr-set.json`, но `ggml.h` по этому тегу типов не содержит. Т.е. код есть в ветке и в пине, а в фактически шипнутых бинарниках на момент проверки — нет.
+
+4. **Опубликованные модели их не используют.** Листинг файлов HF-репозиториев `unsloth/DeepSeek-V3.1-GGUF`, `unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `unsloth/gemma-3-27b-it-GGUF`: только стандартные типы (`IQ1_M, IQ1_S, IQ2_XXS, IQ3_XXS, IQ4_XS, Q2_K…Q8_0, *_K_XL, Q2_K_L, TQ1_0, F16/BF16/F32`). `Q4_K_XL`, `Q2_K_L` и прочие суффиксы — это **именование рецептов** (какие тензоры в какой стандартный тип), а не новые форматы.
+
+**Итог:** «свои квант-типы» — это экспериментальная разработка в форке (суб-1-бит ниже IQ1_S); «работает на стоковом llama.cpp» — про реально публикуемые GGUF, которые собраны из стандартных типов. Противоречия нет, но формулировка «у них свой тип квантизации» без уточнений вводит в заблуждение.
+
+Команды для самостоятельной проверки:
+
+```bash
+# enum типов в апстриме / форке / релизном теге
+curl -s https://raw.githubusercontent.com/ggml-org/llama.cpp/master/ggml/include/ggml.h | grep -n "IQ1"
+curl -s https://raw.githubusercontent.com/unslothai/llama.cpp/master/ggml/include/ggml.h | grep -n "IQ1"
+curl -s https://raw.githubusercontent.com/unslothai/llama.cpp/b10360-mix-87da1a2/ggml/include/ggml.h | grep -n "IQ1"
+
+# что реально запинено в ночные сборки
+curl -s https://raw.githubusercontent.com/unslothai/llama.cpp/master/scripts/unsloth/pr-set.json
+
+# типы в именах опубликованных GGUF
+curl -s "https://huggingface.co/api/models/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF" \
+  | python3 -c "import json,sys; print('\n'.join(sorted(f['rfilename'] for f in json.load(sys.stdin)['siblings'] if f['rfilename'].endswith('.gguf'))))"
+```
+
+### Прочие перепроверенные утверждения
+
+| Утверждение | Статус | Источник |
+|---|---|---|
+| `llama-server` имеет Anthropic-совместимый `POST /v1/messages` | подтверждено | tools/server/README.md, строка 1563 |
+| `--jinja` включён по умолчанию | подтверждено | tools/server/README.md: «(default: enabled)» |
+| `--api-key` — единственная встроенная auth | подтверждено | tools/server/README.md, SECURITY.md |
+| RPC-бэкенд жив, бинарь `ggml-rpc-server`, статус PoC | подтверждено | tools/rpc/README.md: «proof-of-concept development stage» |
+| Форк = «апстримный тег + пины», master форка отстаёт от апстрима | подтверждено | compare API: ahead 158 / behind 897; `_doc` в pr-set.json |
+| Prebuilt-релизы форка выходят ежедневно, теги `bNNNNN-mix-<sha>` | подтверждено | API релизов, 5 релизов за 4 дня |
+
+Оговорка про «форк = апстрим + упаковка»: формально diff форка с апстримом затрагивает 223 не-CI файла, но это в основном следствие **отставания** master форка от апстрима (behind 897), а не форк-патчей — реальные изменения форка это CI-воркфлоу пребилдов, `scripts/unsloth/*` и пины.
 
 ---
 
