@@ -25,12 +25,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python3.12 python3.12-venv \
     && rm -rf /var/lib/apt/lists/*
 
-# Корпоративный TLS-инспектор (SSL inspection / MITM-прокси).
-# Если сеть подменяет сертификаты (увидите "invalid peer certificate:
-# UnknownIssuer" в логах установки), положите корневой CA вашей сети
-# (*.crt) в docker/certs/ — он добавится в системное хранилище образа.
-# Папка пуста (только .gitkeep) — образ не меняется, сборка идентична обычной.
-# Сами .crt в git не коммитятся (см. .gitignore): в них имена вашей организации.
+# Сеть с подменой TLS-сертификатов: положите CA (*.crt) в docker/certs/ —
+# они попадут в системное хранилище образа до любых сетевых шагов сборки.
+# Папка пуста — сборка идентична обычной. *.crt не коммитятся (.gitignore).
 COPY docker/certs/ /tmp/corp-certs/
 RUN mkdir -p /usr/local/share/ca-certificates/corp \
  && find /tmp/corp-certs -maxdepth 1 -name '*.crt' -exec cp -t /usr/local/share/ca-certificates/corp {} + \

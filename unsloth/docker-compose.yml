@@ -51,8 +51,6 @@ services:
       # Пароль админа Studio при ПЕРВОМ старте (потом меняется в настройках UI).
       # Studio требует минимум 8 символов. 12345678 — слабый, держать только в частной сети.
       UNSLOTH_STUDIO_PASSWORD: ${UNSLOTH_STUDIO_PASSWORD:-12345678}
-      # За корпоративным TLS-инспектором xet-загрузки Hugging Face ломаются
-      # ("File reconstruction error: CAS Client Error"). Если сеть с SSL
-      # inspection (см. docker/certs/), выставьте HF_HUB_DISABLE_XET=1 —
-      # это переключит загрузки (в т.ч. из UI Studio) на обычный CDN.
+      # Если сеть подменяет TLS-сертификаты: xet-загрузки HF ломаются
+      # ("CAS Client Error") — ставьте HF_HUB_DISABLE_XET=1 (в т.ч. для загрузок из UI).
       HF_HUB_DISABLE_XET: ${HF_HUB_DISABLE_XET:-0}
