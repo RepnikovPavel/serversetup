@@ -25,6 +25,29 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python3.12 python3.12-venv \
     && rm -rf /var/lib/apt/lists/*
 
+# Корпоративный TLS-инспектор (SSL inspection / MITM-прокси).
+# Если сеть подменяет сертификаты (увидите "invalid peer certificate:
+# UnknownIssuer" в логах установки), положите корневой CA вашей сети
+# (*.crt) в docker/certs/ — он добавится в системное хранилище образа.
+# Папка пуста (только .gitkeep) — образ не меняется, сборка идентична обычной.
+# Сами .crt в git не коммитятся (см. .gitignore): в них имена вашей организации.
+COPY docker/certs/ /tmp/corp-certs/
+RUN mkdir -p /usr/local/share/ca-certificates/corp \
+ && find /tmp/corp-certs -maxdepth 1 -name '*.crt' -exec cp -t /usr/local/share/ca-certificates/corp {} + \
+ && if ls /usr/local/share/ca-certificates/corp/*.crt >/dev/null 2>&1; then update-ca-certificates; fi \
+ && rm -rf /tmp/corp-certs
+
+# Единые переменные доверия для всех инструментов установки и рантайма
+# (uv/pip/curl/git/python-requests/node). Все указывают на системный бандл —
+# безопасно и в обычной сети, это просто явный путь к дефолтному хранилищу.
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
+    REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt \
+    CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt \
+    GIT_SSL_CAINFO=/etc/ssl/certs/ca-certificates.crt \
+    NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt \
+    PIP_CERT=/etc/ssl/certs/ca-certificates.crt \
+    UV_NATIVE_TLS=true
+
 # uv ставится с GitHub releases: astral.sh (дефолтный источник uv в install.sh)
 # из части сетей недоступен.
 RUN curl -fsSL https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-unknown-linux-gnu.tar.gz \

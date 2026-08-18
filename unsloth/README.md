@@ -58,6 +58,29 @@ Studio требует минимум 8 символов).
 Переустановка/обновление: удалить `${UNSLOTH_HOST_DIR}/studio` и перезапустить,
 либо `docker exec <container> unsloth studio update`.
 
+## Корпоративная сеть с TLS-инспекцией (SSL inspection)
+
+Симптом: на домашней машине ставится, на рабочей — нет; в логах
+(`docker compose logs -f`) при установке torch/моделей:
+
+```
+error: Failed to fetch: `https://download.pytorch.org/whl/cu128/...`
+Caused by: invalid peer certificate: UnknownIssuer
+```
+
+Причина: корпоративный прокси подменяет TLS-сертификаты, а в образе нет
+корневого CA вашей сети. Решение (один раз):
+
+```sh
+# 1. скопировать корпоративный CA с хоста в проект (имена файлов произвольные, *.crt)
+cp /usr/local/share/ca-certificates/*.crt unsloth/docker/certs/
+# 2. пересобрать и поднять как обычно
+UNSLOTH_HOST_DIR=/mnt/data1/unsloth docker compose up -d --build
+```
+
+Подробности: `docker/certs/README.md`. Файлы `*.crt` в этой папке не коммитятся
+(в .gitignore) — в них имена вашей организации.
+
 ## Важные детали
 
 - **Пин torch:** на этапе `docker build` GPU недоступен, авто-детект CUDA в install.sh
