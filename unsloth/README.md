@@ -74,9 +74,15 @@ Caused by: invalid peer certificate: UnknownIssuer
 ```sh
 # 1. скопировать корпоративный CA с хоста в проект (имена файлов произвольные, *.crt)
 cp /usr/local/share/ca-certificates/*.crt unsloth/docker/certs/
-# 2. пересобрать и поднять как обычно
-UNSLOTH_HOST_DIR=/mnt/data1/unsloth docker compose up -d --build
+# 2. пересобрать и поднять как обычно (+ отключить xet, он ломается за инспектором)
+UNSLOTH_HOST_DIR=/mnt/data1/unsloth HF_HUB_DISABLE_XET=1 docker compose up -d --build
 ```
+
+Второй симптом той же сети: загрузки моделей с Hugging Face падают с
+`File reconstruction error: CAS Client Error` — это xet-протокол за MITM-прокси.
+Лечится `HF_HUB_DISABLE_XET=1` (см. `.env.example`; действует и на загрузки из UI Studio).
+Проверено на живом стенде: с CA в `docker/certs/` и `HF_HUB_DISABLE_XET=1` установка
+и скачивание 16-ГБ GGUF проходят полностью.
 
 Подробности: `docker/certs/README.md`. Файлы `*.crt` в этой папке не коммитятся
 (в .gitignore) — в них имена вашей организации.
