@@ -10,6 +10,15 @@ set -e
 STUDIO_HOME="${UNSLOTH_STUDIO_HOME:-/data/studio}"
 export UNSLOTH_STUDIO_HOME="$STUDIO_HOME"
 
+# UNSLOTH_HOST_DIR не задан при up — тома примонтированы из заглушки
+# /nonexistent (см. docker-compose.yml), работать нельзя: падаем явно.
+if [ -z "${UNSLOTH_HOST_DIR:-}" ]; then
+    echo "ОШИБКА: не задан UNSLOTH_HOST_DIR." >&2
+    echo "Запуск: UNSLOTH_HOST_DIR=/mnt/data1/unsloth_default docker compose up -d --build" >&2
+    echo "(остановке переменные не нужны: docker compose down)" >&2
+    exit 1
+fi
+
 if [ ! -x "$STUDIO_HOME/bin/unsloth" ]; then
     echo "=============================================================="
     echo " Первый запуск: установка Unsloth Studio в $STUDIO_HOME"

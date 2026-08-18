@@ -17,6 +17,10 @@ UNSLOTH_HOST_DIR=/mnt/data1/unsloth_default CUDA_VARIANT=cu128 STUDIO_HOST_PORT=
 UI: `http://<host>:48218`, логин `unsloth`, пароль из `UNSLOTH_STUDIO_PASSWORD`.
 Для RTX 5090: `CUDA_VARIANT=cu130`. Переустановка: удалить `${UNSLOTH_HOST_DIR}/studio` и снова `up`.
 
+```sh
+docker compose down   # остановка; переменные не нужны
+```
+
 ## Быстрый старт в сети с подменой TLS-сертификатов
 
 Симптом: `invalid peer certificate: UnknownIssuer` в логах установки.

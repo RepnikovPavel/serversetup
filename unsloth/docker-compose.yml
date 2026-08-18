@@ -36,16 +36,21 @@ services:
     ports:
       - "${STUDIO_HOST_PORT:-8000}:8000"
     volumes:
+      # UNSLOTH_HOST_DIR имеет дефолт-заглушку, чтобы `docker compose down`
+      # работал без переменных. При `up` без переменной контейнер упадёт
+      # с понятным сообщением — проверка в entrypoint.sh.
       # Сама установка Studio (venv, torch, llama.cpp) — ставится при первом
       # запуске контейнера сюда, на хостовый диск, а не в overlay докера
-      - ${UNSLOTH_HOST_DIR:?укажи UNSLOTH_HOST_DIR, например UNSLOTH_HOST_DIR=/mnt/data1/unsloth}/studio:/data/studio
+      - ${UNSLOTH_HOST_DIR:-/nonexistent}/studio:/data/studio
       # Кэш uv (ускоряет переустановку/обновление стека)
-      - ${UNSLOTH_HOST_DIR:?укажи UNSLOTH_HOST_DIR, например UNSLOTH_HOST_DIR=/mnt/data1/unsloth}/uv_cache:/data/uv_cache
+      - ${UNSLOTH_HOST_DIR:-/nonexistent}/uv_cache:/data/uv_cache
       # HF-кэш с моделями (GGUF и safetensors), переживает пересоздание контейнера
-      - ${UNSLOTH_HOST_DIR:?укажи UNSLOTH_HOST_DIR, например UNSLOTH_HOST_DIR=/mnt/data1/unsloth}/hf_cache:/data/hf_cache
+      - ${UNSLOTH_HOST_DIR:-/nonexistent}/hf_cache:/data/hf_cache
       # Рабочая папка: датасеты, чекпоинты, экспорты
-      - ${UNSLOTH_HOST_DIR:?укажи UNSLOTH_HOST_DIR, например UNSLOTH_HOST_DIR=/mnt/data1/unsloth}/work:/data/work
+      - ${UNSLOTH_HOST_DIR:-/nonexistent}/work:/data/work
     environment:
+      # Проброс для проверки в entrypoint.sh (up без переменной = явная ошибка)
+      UNSLOTH_HOST_DIR: ${UNSLOTH_HOST_DIR:-}
       # Токен Hugging Face для gated-моделей; пустой — только публичные
       HF_TOKEN: ${HF_TOKEN:-}
       # Пароль админа Studio при ПЕРВОМ старте (потом меняется в настройках UI).
