@@ -10,7 +10,10 @@
 
 Пакет unsloth ставится из ветки `server-serving` форка
 `github.com/RepnikovPavel/unsloth` (compose-переменная `UNSLOTH_PACKAGE_SPEC`).
-Поведение авто-загрузки по API задаётся env в `docker-compose.yml`:
+Обновление пакета на работающем сервере: впинить коммит в spec
+(`.../archive/<sha>.tar.gz`) — uv кэширует тарболл по URL — либо
+`docker exec unsloth-studio-cu128 rm /data/studio/.unsloth_package_spec` и
+рестарт контейнера. Поведение авто-загрузки по API задаётся env в `docker-compose.yml`:
 
 - `UNSLOTH_LLAMA_CTX_SIZE=262144` — полный нативный контекст 256K. Явный контекст
   лоадер не урезает под VRAM одной карты: не хватает — закрепляет обе GPU
@@ -33,6 +36,10 @@
 сервится 256K. Если очень надо: `UNSLOTH_LLAMA_CTX_SIZE=1048576` плюс
 `llama_extra_args` с YaRN через per-model override
 (`/api/settings/openai-auto-switch/overrides`) — на свой страх и риск.
+
+Про CPU-инстанс: замерено на этом сервере (2× Xeon Gold 5218R, 40 потоков,
+`-ngl 0`) — генерация **1.9 t/s** при пороге полезности 10 t/s. CPU-инстанс
+не поднимаем: он только отнимет RAM-каналы у GPU-инференса.
 
 ## 1. Скачать квант (рекомендация Unsloth — UD-Q4_K_XL)
 
