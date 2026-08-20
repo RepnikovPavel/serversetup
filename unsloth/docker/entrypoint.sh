@@ -29,18 +29,39 @@ fi
 
 # Пакет unsloth из форка (тарболл ветки с сервинг-фиксами) поверх PyPI-релиза.
 # Маркер защищает от переустановки на каждый старт; смена spec = одна переустановка.
+# Обновление той же ветки: удалить маркер (/data/studio/.unsloth_package_spec) и рестарт.
 # --no-deps: ветка держится на коде установленного релиза, набор зависимостей тот же,
 # а трогать torch/torchvision в работающем venv нельзя.
 if [ -n "${UNSLOTH_PACKAGE_SPEC:-}" ]; then
     MARKER="$STUDIO_HOME/.unsloth_package_spec"
     if [ "$(cat "$MARKER" 2>/dev/null)" != "$UNSLOTH_PACKAGE_SPEC" ]; then
         echo "Установка пакета unsloth из: $UNSLOTH_PACKAGE_SPEC"
-        uv pip install --python "$STUDIO_HOME/unsloth_studio/bin/python" --no-deps "$UNSLOTH_PACKAGE_SPEC" || {
+        SP="$STUDIO_HOME/unsloth_studio/lib/python3.12/site-packages"
+        TMPD=$(mktemp -d)
+        # В git-тарболле нет сборных артефактов релиза (frontend/dist, prebuilt
+        # oxc-validator) — без них Studio падает с "frontend build not found".
+        # Сохраняем от PyPI-пакета и возвращаем после установки.
+        for d in "studio/frontend/dist" "studio/backend/core/data_recipe/oxc-validator/node_modules"; do
+            if [ -d "$SP/$d" ]; then
+                mkdir -p "$TMPD/$(dirname "$d")"
+                cp -a "$SP/$d" "$TMPD/$d"
+            fi
+        done
+        if uv pip install --python "$STUDIO_HOME/unsloth_studio/bin/python" --no-deps "$UNSLOTH_PACKAGE_SPEC"; then
+            for d in "studio/frontend/dist" "studio/backend/core/data_recipe/oxc-validator/node_modules"; do
+                if [ ! -d "$SP/$d" ] && [ -d "$TMPD/$d" ]; then
+                    mkdir -p "$SP/$(dirname "$d")"
+                    cp -a "$TMPD/$d" "$SP/$d"
+                fi
+            done
+            echo "$UNSLOTH_PACKAGE_SPEC" > "$MARKER"
+            rm -rf "$TMPD"
+        else
+            rm -rf "$TMPD"
             echo "ОШИБКА: не удалось установить $UNSLOTH_PACKAGE_SPEC" >&2
             echo "Очистите переменную UNSLOTH_PACKAGE_SPEC для отката на PyPI-релиз." >&2
             exit 1
-        }
-        echo "$UNSLOTH_PACKAGE_SPEC" > "$MARKER"
+        fi
     fi
 fi
 
