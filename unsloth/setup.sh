@@ -8,7 +8,8 @@
 #   UNSLOTH_HOST_DIR=/mnt/data1/unsloth_default USE_LOCAL_CA=1 HF_HUB_DISABLE_XET=1 bash setup.sh
 #
 # Клиент (настроить OpenCode на этого агента + проверить связь):
-#   bash setup.sh client <SERVER_IP> <PORT> <API_KEY>
+#   bash setup.sh client <SERVER_IP> <PORT> <API_KEY> [DISPLAY_NAME]
+# DISPLAY_NAME — имя модели в UI агента (квант+объём печатает сервер в конце установки).
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -25,21 +26,27 @@ OUT="out"; mkdir -p "$OUT"   # сгенерированные ключи/кон�
 
 if [ "${1:-}" = "client" ]; then
     SRV="http://${2:?SERVER_IP}:${3:?PORT}"; KEY="${4:?API_KEY}"
+    # Имя модели в UI агента: с квантом и объёмом весов, например
+    # "Qwen3.8-27B UD-Q4_K_XL · 17.9 GB · ctx 256K" (сервер печатает готовую
+    # команду с этим аргументом в конце setup.sh). id модели не меняется.
+    DISPLAY="${5:-$REPO}"
     echo "== 1/2 проверка связи =="
     curl -fsS "$SRV/v1/models" -H "Authorization: Bearer $KEY" | head -c 300; echo
     echo "== 2/2 конфиг OpenCode =="
     mkdir -p ~/.config/opencode
-    python3 - "$SRV" "$KEY" "$REPO" <<'EOF'
+    CTX="${MODEL_CTX:-262144}" OUT_TOK="${MODEL_OUTPUT:-16384}" \
+    python3 - "$SRV" "$KEY" "$REPO" "$DISPLAY" <<'EOF'
 import json,sys,os
-srv,key,model=sys.argv[1:4]
+srv,key,model,display=sys.argv[1:5]
+ctx=int(os.environ.get("MODEL_CTX","262144")); out_tok=int(os.environ.get("MODEL_OUTPUT","16384"))
 p=os.path.expanduser("~/.config/opencode/opencode.json")
 cfg=json.load(open(p)) if os.path.exists(p) else {"$schema":"https://opencode.ai/config.json"}
 cfg.setdefault("provider",{})["server"]={"npm":"@ai-sdk/openai-compatible","name":"server",
   "options":{"baseURL":srv+"/v1","apiKey":key},
-  "models":{model:{"name":model,"limit":{"context":32768,"output":8192}}}}
+  "models":{model:{"name":display,"limit":{"context":ctx,"output":out_tok}}}}
 json.dump(cfg,open(p,"w"),indent=2); print("записано:",p)
 EOF
-    echo "Готово. Запуск: opencode  (модель: $REPO)"
+    echo "Готово. Запуск: opencode  (модель: $DISPLAY)"
     exit 0
 fi
 
@@ -79,7 +86,24 @@ curl -fsS -X POST "http://127.0.0.1:$PORT/v1/chat/completions" -H "Authorization
   -d "{\"model\":\"$REPO\",\"messages\":[{\"role\":\"user\",\"content\":\"2+2? одной цифрой\"}],\"max_tokens\":256,\"chat_template_kwargs\":{\"enable_thinking\":false}}" \
   | python3 -c 'import json,sys;print("ответ модели:",json.load(sys.stdin)["choices"][0]["message"]["content"])'
 
+# Отображаемое имя для агентов: базовая модель + квант + объём весов + контекст.
+BASE_NAME=$(basename "$REPO" | sed 's/-GGUF$//')
+SIZE_BYTES=$(docker exec "$CONTAINER" sh -c "stat -c %s /data/hf_cache/hub/models--${REPO/\//--}/snapshots/*/*${QUANT}*.gguf 2>/dev/null | head -1" || true)
+CTX="${UNSLOTH_LLAMA_CTX_SIZE:-262144}"
+DISPLAY=$(BASE_NAME="$BASE_NAME" QUANT="$QUANT" SIZE_BYTES="$SIZE_BYTES" CTX="$CTX" python3 - <<'EOF'
+import os
+base=os.environ["BASE_NAME"]; quant=os.environ["QUANT"]
+size=os.environ.get("SIZE_BYTES") or ""
+gb=f"{int(size)/1e9:.1f} GB" if size.isdigit() else "? GB"
+ctx_k=int(os.environ.get("CTX","262144"))//1024
+print(f"{base} {quant} · {gb} · ctx {ctx_k}K")
+EOF
+)
+echo "$DISPLAY" > "$OUT/model_display_name"
+
 echo "=============================================================="
 echo "ГОТОВО. Агентам: baseURL=http://$SRV_IP:$PORT/v1  model=$REPO"
 echo "API-ключ: $KEY"
-echo "(ключ также в $OUT/agent_api_key; на машине агента: bash setup.sh client $SRV_IP $PORT $KEY)"
+echo "(ключ также в $OUT/agent_api_key)"
+echo "На машине агента:"
+echo "  bash setup.sh client $SRV_IP $PORT $KEY \"$DISPLAY\""

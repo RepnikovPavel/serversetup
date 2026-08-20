@@ -27,6 +27,23 @@ if [ ! -x "$STUDIO_HOME/bin/unsloth" ]; then
     UNSLOTH_SKIP_AUTOSTART=1 UNSLOTH_PYTHON=3.12 sh /opt/unsloth-install/install.sh
 fi
 
+# Пакет unsloth из форка (тарболл ветки с сервинг-фиксами) поверх PyPI-релиза.
+# Маркер защищает от переустановки на каждый старт; смена spec = одна переустановка.
+# --no-deps: ветка держится на коде установленного релиза, набор зависимостей тот же,
+# а трогать torch/torchvision в работающем venv нельзя.
+if [ -n "${UNSLOTH_PACKAGE_SPEC:-}" ]; then
+    MARKER="$STUDIO_HOME/.unsloth_package_spec"
+    if [ "$(cat "$MARKER" 2>/dev/null)" != "$UNSLOTH_PACKAGE_SPEC" ]; then
+        echo "Установка пакета unsloth из: $UNSLOTH_PACKAGE_SPEC"
+        uv pip install --python "$STUDIO_HOME/unsloth_studio/bin/python" --no-deps "$UNSLOTH_PACKAGE_SPEC" || {
+            echo "ОШИБКА: не удалось установить $UNSLOTH_PACKAGE_SPEC" >&2
+            echo "Очистите переменную UNSLOTH_PACKAGE_SPEC для отката на PyPI-релиз." >&2
+            exit 1
+        }
+        echo "$UNSLOTH_PACKAGE_SPEC" > "$MARKER"
+    fi
+fi
+
 export PATH="$STUDIO_HOME/bin:$PATH"
 
 # Лаунчер unsloth (с ~2026.8.7) трактует UNSLOTH_STUDIO_PASSWORD как --password

@@ -59,3 +59,19 @@ services:
       # Если сеть подменяет TLS-сертификаты: xet-загрузки HF ломаются
       # ("CAS Client Error") — ставьте HF_HUB_DISABLE_XET=1 (в т.ч. для загрузок из UI).
       HF_HUB_DISABLE_XET: ${HF_HUB_DISABLE_XET:-0}
+      # --- Сервинг для агентов (ветка server-serving форка unsloth) ---
+      # Пакет unsloth ставится из этого тарболла поверх PyPI-релиза (см. entrypoint.sh).
+      # Пустое значение = стоковый PyPI-пакет без наших сервинг-фиксов.
+      UNSLOTH_PACKAGE_SPEC: ${UNSLOTH_PACKAGE_SPEC:-https://github.com/RepnikovPavel/unsloth/archive/refs/heads/server-serving.tar.gz}
+      # Контекст авто-загрузки по API. Явный контекст лоадер не режет — при нехватке
+      # VRAM одной карты он закрепляет обе GPU. 262144 = нативные 256K Qwen3.8-27B.
+      UNSLOTH_LLAMA_CTX_SIZE: ${UNSLOTH_LLAMA_CTX_SIZE:-262144}
+      # Один слот на весь контекст: пользователи НЕ делят контекст, а стоят в
+      # очереди (admission FIFO) + per-user KV-снапшоты ниже.
+      UNSLOTH_LLAMA_N_PARALLEL: ${UNSLOTH_LLAMA_N_PARALLEL:-1}
+      # Пул GPU для модели ("0,1"); пусто = все видимые (лоадер сам возьмёт нужные).
+      UNSLOTH_LLAMA_GPU_IDS: ${UNSLOTH_LLAMA_GPU_IDS:-}
+      # Per-user KV-сессии: при смене API-ключа слот сбрасывается на диск и
+      # поднимается снапшот нового пользователя. TTL снапшотов — 3 суток.
+      UNSLOTH_KV_SESSIONS: ${UNSLOTH_KV_SESSIONS:-1}
+      UNSLOTH_KV_SESSION_TTL_S: ${UNSLOTH_KV_SESSION_TTL_S:-259200}

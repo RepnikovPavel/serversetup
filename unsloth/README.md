@@ -39,6 +39,21 @@ docker compose down   # остановка; переменные не нужны
 UI: `http://<host>:48218`, логин `unsloth`, пароль из `UNSLOTH_STUDIO_PASSWORD`.
 Для RTX 5090: `CUDA_VARIANT=cu130`.
 
+## Сервинг для агентов (по умолчанию включён)
+
+Пакет unsloth ставится из ветки `server-serving` форка
+[RepnikovPavel/unsloth](https://github.com/RepnikovPavel/unsloth) (переменная
+`UNSLOTH_PACKAGE_SPEC` в compose; пусто = стоковый PyPI). Что это даёт:
+
+- полный контекст 256K (`UNSLOTH_LLAMA_CTX_SIZE=262144`), модель закрепляет
+  обе GPU, а не влезает в одну с урезанным контекстом;
+- один слот (`UNSLOTH_LLAMA_N_PARALLEL=1`): контекст не режется между
+  пользователями, запросы ждут в FIFO-очереди;
+- per-user KV-кэш по API-ключам со снапшотами на диск, TTL 3 суток
+  (`UNSLOTH_KV_SESSIONS=1`, `UNSLOTH_KV_SESSION_TTL_S=259200`).
+
+Подробности: `docs/serve_qwen38_27b_gguf.md`.
+
 ## Дальше
 
 - `docs/serve_qwen38_27b_gguf.md` — кванты и сервинг руками

@@ -8,6 +8,9 @@ cd "$(dirname "$0")/.."
 SERVER="${SERVER:?укажи SERVER=http://<ip>:<port>}"
 KEY="${API_KEY:?укажи API_KEY=sk-unsloth-...}"
 MODEL="${MODEL_REPO:-unsloth/Qwen3.8-27B-GGUF}"
+# Отображаемое имя (квант+объём) и лимиты — как в setup.sh client после фиксов.
+DISPLAY="${MODEL_DISPLAY:-$MODEL}"
+CTX="${MODEL_CTX:-262144}"; OUT_TOK="${MODEL_OUTPUT:-16384}"
 FAIL=0
 
 if command -v opencode >/dev/null 2>&1; then
@@ -16,7 +19,7 @@ if command -v opencode >/dev/null 2>&1; then
 {"\$schema":"https://opencode.ai/config.json",
  "provider":{"server":{"npm":"@ai-sdk/openai-compatible","name":"server",
    "options":{"baseURL":"$SERVER/v1","apiKey":"$KEY"},
-   "models":{"$MODEL":{"name":"$MODEL","limit":{"context":32768,"output":8192}}}}},
+   "models":{"$MODEL":{"name":"$DISPLAY","limit":{"context":$CTX,"output":$OUT_TOK}}}}},
  "model":"server/$MODEL"}
 EOF
   OUT=$(OPENCODE_CONFIG="$CFG" timeout 300 opencode run "Reply with exactly: OK" 2>&1)
