@@ -47,7 +47,7 @@ if [ -n "${UNSLOTH_PACKAGE_SPEC:-}" ]; then
                 cp -a "$SP/$d" "$TMPD/$d"
             fi
         done
-        if uv pip install --python "$STUDIO_HOME/unsloth_studio/bin/python" --no-deps "$UNSLOTH_PACKAGE_SPEC"; then
+        if uv pip install --python "$STUDIO_HOME/unsloth_studio/bin/python" --no-deps --refresh-package unsloth "$UNSLOTH_PACKAGE_SPEC"; then
             for d in "studio/frontend/dist" "studio/backend/core/data_recipe/oxc-validator/node_modules"; do
                 if [ ! -d "$SP/$d" ] && [ -d "$TMPD/$d" ]; then
                     mkdir -p "$SP/$(dirname "$d")"
