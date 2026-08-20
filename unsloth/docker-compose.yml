@@ -73,5 +73,12 @@ services:
       UNSLOTH_LLAMA_GPU_IDS: ${UNSLOTH_LLAMA_GPU_IDS:-}
       # Per-user KV-сессии: при смене API-ключа слот сбрасывается на диск и
       # поднимается снапшот нового пользователя. TTL снапшотов — 3 суток.
+      # Для гибридных моделей (qwen35) дисковый своп пропускается: после restore
+      # llama.cpp всё равно делает полный re-prefill (issue ggml-org/llama.cpp#25913),
+      # а переключение обслуживает встроенный prompt cache в RAM (--cache-ram ниже).
       UNSLOTH_KV_SESSIONS: ${UNSLOTH_KV_SESSIONS:-1}
       UNSLOTH_KV_SESSION_TTL_S: ${UNSLOTH_KV_SESSION_TTL_S:-259200}
+      # Лимит in-memory prompt cache llama-server (МиБ, -1 = без лимита, 0 = выкл).
+      # Дефолт апстрима 8192 не вмещает даже одну сессию ~200K токенов (~14-19 ГиБ
+      # с чекпоинтами) — без этого флага переключение пользователей = полный re-prefill.
+      UNSLOTH_LLAMA_CACHE_RAM_MIB: ${UNSLOTH_LLAMA_CACHE_RAM_MIB:-131072}

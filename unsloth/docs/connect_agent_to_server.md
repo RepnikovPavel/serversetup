@@ -8,9 +8,24 @@
 
 ## Делай раз — получить API-ключ (на сервере, один раз на человека)
 
+`<ADMIN_PASSWORD>` — пароль админа Studio, который задавали при первом запуске
+через `UNSLOTH_STUDIO_PASSWORD` (в этом репо дефолт `12345678`). Если сервер
+поднимали по README без изменений — это `12345678`. Пароль не знаете —
+сбросьте (на сервере):
+
 ```sh
-TOKEN=$(curl -s -X POST http://127.0.0.1:48218/api/auth/login -H 'Content-Type: application/json' -d '{"username":"unsloth","password":"<ADMIN_PASSWORD>"}' | python3 -c 'import json,sys;print(json.load(sys.stdin)["access_token"])')
+docker exec -it unsloth-studio-cu128 /data/studio/unsloth_studio/bin/unsloth studio reset-password
 ```
+
+Логинимся и получаем токен. Команда специально сделана «громкой»: при неверном
+пароле она печатает ответ сервера, а не молчаливый traceback:
+
+```sh
+TOKEN=$(curl -s -X POST http://127.0.0.1:48218/api/auth/login -H 'Content-Type: application/json' -d '{"username":"unsloth","password":"<ADMIN_PASSWORD>"}' | python3 -c 'import json,sys; r=json.load(sys.stdin); t=r.get("access_token"); t or sys.exit("ЛОГИН НЕ УДАЛСЯ: %s" % r.get("detail", r)); print(t)')
+```
+
+Если увидели `ЛОГИН НЕ УДАЛСЯ: Incorrect password...` — пароль неверный
+(частая опечатка: `123456789` вместо `12345678`), см. сброс выше.
 
 ```sh
 curl -s -X POST http://127.0.0.1:48218/api/auth/api-keys -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' -d '{"name":"agent-1"}'

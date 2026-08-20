@@ -59,5 +59,6 @@ UI: `http://<host>:48218`, логин `unsloth`, пароль из `UNSLOTH_STUD
 - `docs/serve_qwen38_27b_gguf.md` — кванты и сервинг руками
 - `docs/connect_agent_to_server.md` — OpenCode/Aider/Cline, SSH-туннель
 - `docs/free_gpu.md` — освободить GPU (`bash free_gpu.sh`)
-- `tests/` — `smoke.sh` (ручки и модель), `agents.sh` (реальные агенты)
+- `tests/` — `smoke.sh` (ручки и модель), `agents.sh` (реальные агенты),
+  `bench_kv_switch.py` (цена переключения KV между пользователями)
 - `notes/` — заметки разработчика
