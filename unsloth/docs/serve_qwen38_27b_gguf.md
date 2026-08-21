@@ -22,6 +22,10 @@
   нет, поэтому контекст НЕ делится между пользователями: запросы разных
   пользователей встают во встроенную FIFO-очередь admission.
 - `UNSLOTH_LLAMA_GPU_IDS=` — пул GPU; пусто = все видимые.
+- `UNSLOTH_LLAMA_REASONING_EFFORT=` — дефолтный thinking-режим при загрузке
+  (none|low|medium|high|xhigh; пусто = thinking вкл). Per-request
+  `reasoning_effort` от клиента перекрывает без перезапуска — см.
+  `connect_agent_to_server.md`, «Thinking-режим».
 - `UNSLOTH_KV_SESSIONS=1`, `UNSLOTH_KV_SESSION_TTL_S=259200` — per-user KV-кэш:
   когда слот переходит к другому API-ключу, состояние диалога предыдущего
   пользователя сохраняется, нового — восстанавливается. Механизм зависит от

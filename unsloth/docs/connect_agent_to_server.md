@@ -46,6 +46,31 @@ bash setup.sh client <SERVER_IP> 48218 <API_KEY> "<DISPLAY_NAME>"
 Скрипт проверит связь и запишет конфиг OpenCode (лимиты: context 262144,
 output 16384 — полный нативный контекст модели). Дальше просто `opencode`.
 
+## Thinking-режим (reasoning effort)
+
+Модель умеет переключать усилие размышлений **на лету, per-request** — сервер
+перезапускать не нужно. В OpenCode режим выбирается прямо в UI: `setup.sh client`
+записывает модели variants `off / low / medium / high / xhigh` (выбор — в
+пикере модели рядом с именем; по умолчанию `high`). Вариант уходит на сервер
+как OpenAI-поле `reasoning_effort`; `off` = thinking выключен.
+
+Сырые клиенты — то же полем в запросе:
+
+```sh
+curl -s -X POST http://<SERVER_IP>:48218/v1/chat/completions -H "Authorization: Bearer <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"unsloth/Qwen3.8-27B-GGUF","messages":[{"role":"user","content":"2+2?"}],
+       "reasoning_effort":"low"}'    # none|low|medium|high|xhigh
+```
+
+(эквивалент для SDK без `reasoning_effort`: `"chat_template_kwargs":{"enable_thinking":false}`
+— выкл, или `{"enable_thinking":true,"reasoning_effort":"xhigh"}`).
+
+Дефолт, когда клиент ничего не шлёт, задаётся на сервере переменной
+`UNSLOTH_LLAMA_REASONING_EFFORT` (none|low|medium|high|xhigh, пусто = thinking
+вкл с усилием шаблона) в `.env`/`docker-compose.yml` — это настройка запуска,
+требует перезагрузки модели.
+
 ## Делай три — если harness другой
 
 Aider:

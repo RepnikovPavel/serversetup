@@ -50,7 +50,10 @@ UI: `http://<host>:48218`, логин `unsloth`, пароль из `UNSLOTH_STUD
 - один слот (`UNSLOTH_LLAMA_N_PARALLEL=1`): контекст не режется между
   пользователями, запросы ждут в FIFO-очереди;
 - per-user KV-кэш по API-ключам со снапшотами на диск, TTL 3 суток
-  (`UNSLOTH_KV_SESSIONS=1`, `UNSLOTH_KV_SESSION_TTL_S=259200`).
+  (`UNSLOTH_KV_SESSIONS=1`, `UNSLOTH_KV_SESSION_TTL_S=259200`);
+- thinking-режим модели: дефолт при загрузке `UNSLOTH_LLAMA_REASONING_EFFORT`
+  (none|low|medium|high|xhigh), на лету — per-request `reasoning_effort`
+  (в OpenCode — variants в пикере модели, см. `docs/connect_agent_to_server.md`).
 
 Подробности: `docs/serve_qwen38_27b_gguf.md`.
 

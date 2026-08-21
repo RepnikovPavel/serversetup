@@ -45,6 +45,30 @@
    capability `supports_cache_ram`). Дефолт апстрима 8192 МиБ не вмещает сессию
    ~200K токенов (14-19 ГиБ с чекпоинтами) — на сервере ставим 131072.
 
+Обновление 2026-08-21 (коммит `dff6d09fb`), инцидент: сервинг агентов лёг с
+502 «Lost connection to the model server» после открытия/перезагрузки UI-чата.
+
+6. **orphan-reap не убивает живой сервер, когда Studio = PID 1 (Docker).**
+   В контейнере Studio — PID 1, поэтому у каждого llama-server ppid=1.
+   `_pid_parent_is_alive` читал `ppid <= 1` как «репарентирован к init →
+   orphan», и любой helper-backend, создаваемый в том же процессе
+   (`/api/inference/validate`, count_tokens, advisor — т.е. просто открытие
+   вкладки чата в UI), убивал ЖИВОЙ сервер агентов посреди запроса. Фикс:
+   `ppid == os.getpid()` → живой (обе ветки: psutil и /proc).
+7. **self-heal после смерти сервера.** Раньше при внешнем убийстве
+   llama-server флаг `_healthy` оставался взведённым: auto-switch считал
+   модель загруженной и все запросы 502-или в мёртвый порт до ручной
+   перезагрузки в UI. `_note_passthrough_unreachable` (вызывается из всех
+   passthrough-обработчиков RequestError) сбрасывает флаг, если процесс
+   реально мёртв (`poll()` заодно реапит зомби) — следующий запрос
+   auto-switch поднимает модель сам.
+8. `UNSLOTH_LLAMA_REASONING_EFFORT` (none|low|medium|high|xhigh) — дефолтный
+   thinking-режим в `--chat-template-kwargs` при загрузке
+   (`_reasoning_kwargs_from_effort_env`). Per-request `reasoning_effort` /
+   `enable_thinking` / `chat_template_kwargs` по-прежнему перекрывают его на
+   лету (это уже было: `_request_reasoning_kwargs` + lift из extra_body в
+   `routes/inference.py`). Тесты: `tests/test_serving_outage_fixes.py`.
+
 ## Замеры переключения пользователей (`tests/bench_kv_switch.py`)
 
 Сервер: 2× RTX 4090, qwen35-27B UD-Q4_K_XL, ctx 262144, 1 слот. До фикса

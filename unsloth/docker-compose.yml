@@ -71,6 +71,10 @@ services:
       UNSLOTH_LLAMA_N_PARALLEL: ${UNSLOTH_LLAMA_N_PARALLEL:-1}
       # Пул GPU для модели ("0,1"); пусто = все видимые (лоадер сам возьмёт нужные).
       UNSLOTH_LLAMA_GPU_IDS: ${UNSLOTH_LLAMA_GPU_IDS:-}
+      # Дефолтный thinking-режим модели при загрузке: none|low|medium|high|xhigh.
+      # Пусто = дефолт лоадера (thinking вкл, усилие шаблона). Per-request
+      # reasoning_effort от клиента (см. docs/connect_agent_to_server.md) перекрывает.
+      UNSLOTH_LLAMA_REASONING_EFFORT: ${UNSLOTH_LLAMA_REASONING_EFFORT:-}
       # Per-user KV-сессии: при смене API-ключа слот сбрасывается на диск и
       # поднимается снапшот нового пользователя. TTL снапшотов — 3 суток.
       # Для гибридных моделей (qwen35) дисковый своп пропускается: после restore

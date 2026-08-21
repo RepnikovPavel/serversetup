@@ -43,10 +43,18 @@ p=os.path.expanduser("~/.config/opencode/opencode.json")
 cfg=json.load(open(p)) if os.path.exists(p) else {"$schema":"https://opencode.ai/config.json"}
 cfg.setdefault("provider",{})["server"]={"npm":"@ai-sdk/openai-compatible","name":"server",
   "options":{"baseURL":srv+"/v1","apiKey":key},
-  "models":{model:{"name":display,"limit":{"context":ctx,"output":out_tok}}}}
+  "models":{model:{"name":display,"limit":{"context":ctx,"output":out_tok},
+    "reasoning":True,
+    "options":{"reasoningEffort":"high"},
+    "variants":{
+      "off":{"reasoningEffort":"none"},
+      "low":{"reasoningEffort":"low"},
+      "medium":{"reasoningEffort":"medium"},
+      "high":{"reasoningEffort":"high"},
+      "xhigh":{"reasoningEffort":"xhigh"}}}}}
 json.dump(cfg,open(p,"w"),indent=2); print("записано:",p)
 EOF
-    echo "Готово. Запуск: opencode  (модель: $DISPLAY)"
+    echo "Готово. Запуск: opencode  (модель: $DISPLAY; thinking-режим — variants off/low/medium/high/xhigh в выборе модели)"
     exit 0
 fi
 
