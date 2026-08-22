@@ -53,6 +53,37 @@
 `llama_extra_args` с YaRN через per-model override
 (`/api/settings/openai-auto-switch/overrides`) — на свой страх и риск.
 
+## KV-cache dtype (вписать 256K в меньший VRAM)
+
+Qwen3.8-27B — гибрид (qwen3_5): полный attention только на каждом 4-м слое
+(16 из 64), поэтому KV f16 на 256K — всего ~8.3 ГБ. Раскладка по железу:
+
+- **2×16 ГБ (RTX 5060 Ti)**: Q4_K_XL (17.6 ГБ) + KV f16 (8.3 ГБ) + буферы
+  впритык; ставьте KV q8_0 — VRAM ~28/32 ГБ, контекст полный 262144:
+  ```sh
+  curl -s -X PUT http://127.0.0.1:$PORT/api/settings/openai-auto-switch/overrides \
+    -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" \
+    -d '{"model_id":"unsloth/Qwen3.8-27B-GGUF","kv_cache_dtype":"q8_0"}'
+  # затем выгрузить модель — следующий запрос поднимет её уже с q8_0
+  curl -s -X POST http://127.0.0.1:$PORT/api/inference/unload \
+    -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" \
+    -d '{"model_path":"unsloth/Qwen3.8-27B-GGUF"}'
+  ```
+- **1×12 ГБ (локалка, RTX 4070 Ti)**: веса UD-IQ2_XXS (7.3 ГБ) + KV q4_0
+  (~2.3 ГБ) + буферы ≈ 10.8 ГБ. Квант весов выбирается при установке
+  (`QUANT=UD-IQ2_XXS`), KV — тем же override с `"kv_cache_dtype":"q4_0"`.
+
+Проверка, что реально поднялось то, что нужно (cmdline llama-server внутри
+контейнера): `-c 262144 --cache-type-k q8_0 --cache-type-v q8_0 --flash-attn on`:
+
+```sh
+docker exec unsloth-studio-$CUDA_VARIANT sh -c 'ps aux | grep llama-server | grep -v grep'
+```
+
+Поле `max_context_length` в `/v1/models` — консервативная прикидка лоадера
+«что влезет», а НЕ реальный лимит: форк явный контекст не урезает, реальный
+`-c` смотрите в cmdline выше.
+
 Про CPU-инстанс: замерено на этом сервере (2× Xeon Gold 5218R, 40 потоков,
 `-ngl 0`) — генерация **1.9 t/s** при пороге полезности 10 t/s. CPU-инстанс
 не поднимаем: он только отнимет RAM-каналы у GPU-инференса.
@@ -74,11 +105,13 @@ UD-кванты — динамические, их и рекомендует Uns
 ## 2. Включить автозагрузку модели по первому запросу (один раз)
 
 ```sh
-curl -s -X PUT http://127.0.0.1:$PORT/api/settings/openai-auto-switch -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" -d '{"enabled":true,"auto_unload_idle_seconds":1800}'
+curl -s -X PUT http://127.0.0.1:$PORT/api/settings/openai-auto-switch -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" -d '{"enabled":true,"auto_unload_idle_seconds":300}'
 ```
 
-Перед выгрузкой по idle KV активного пользователя сбрасывается в его снапшот —
-после авто-поднятия модели кэш восстановится.
+`auto_unload_idle_seconds` — выгрузка по простою; `setup.sh` ставит 300
+(переопределяется `UNSLOTH_IDLE_UNLOAD_S`). Перед выгрузкой по idle KV активного
+пользователя сбрасывается в его снапшот — после авто-поднятия модели кэш
+восстановится.
 
 ## 3. Проверить
 
