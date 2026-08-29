@@ -25,18 +25,6 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 HOST_DIR="${UNSLOTH_HOST_DIR:-/mnt/data1/unsloth_default}"
-# CUDA_VARIANT: явное значение всегда побеждает. Без него — автодетект по
-# compute capability GPU: Blackwell (sm_120+, RTX 50xx) → cu130, остальные → cu128.
-if [ -z "${CUDA_VARIANT:-}" ]; then
-    CC_MAJOR=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader 2>/dev/null | cut -d. -f1 | sort -rn | head -1 || true)
-    if [ -n "$CC_MAJOR" ] && [ "$CC_MAJOR" -ge 12 ]; then
-        CUDA_VARIANT=cu130
-    else
-        CUDA_VARIANT=cu128
-    fi
-    echo "CUDA_VARIANT не задан — автодетект по GPU: $CUDA_VARIANT (compute_cap major: ${CC_MAJOR:-нет GPU})"
-fi
-[ -f "docker/Dockerfile.$CUDA_VARIANT" ] || { echo "ОШИБКА: нет docker/Dockerfile.$CUDA_VARIANT — задайте CUDA_VARIANT=cu128|cu130 явно"; exit 1; }
 PORT="${STUDIO_HOST_PORT:-48218}"
 PASSWORD="${UNSLOTH_STUDIO_PASSWORD:-12345678}"
 HF_TOKEN="${HF_TOKEN:-}"
@@ -45,7 +33,6 @@ REPO="${MODEL_REPO:-unsloth/Qwen3.8-27B-GGUF}"
 QUANT="${QUANT:-UD-Q4_K_XL}"
 IDLE_UNLOAD="${UNSLOTH_IDLE_UNLOAD_S:-300}"
 PROVIDER="${PROVIDER:-server}"
-CONTAINER="unsloth-studio-${CUDA_VARIANT}"
 OUT="out"; mkdir -p "$OUT"   # сгенерированные ключи/конфиги, в .gitignore
 
 if [ "${1:-}" = "client" ]; then
@@ -109,6 +96,21 @@ EOF
     echo "Готово. Запуск: opencode  (модель: $PROVIDER/$REPO — «$DISPLAY»; thinking-режим — variants off/low/medium/high/xhigh в выборе модели)"
     exit 0
 fi
+
+# Дальше — только серверный поток. CUDA_VARIANT: явное значение всегда
+# побеждает. Без него — автодетект по compute capability GPU:
+# Blackwell (sm_120+, RTX 50xx) → cu130, остальные → cu128.
+if [ -z "${CUDA_VARIANT:-}" ]; then
+    CC_MAJOR=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader 2>/dev/null | cut -d. -f1 | sort -rn | head -1 || true)
+    if [ -n "$CC_MAJOR" ] && [ "$CC_MAJOR" -ge 12 ]; then
+        CUDA_VARIANT=cu130
+    else
+        CUDA_VARIANT=cu128
+    fi
+    echo "CUDA_VARIANT не задан — автодетект по GPU: $CUDA_VARIANT (compute_cap major: ${CC_MAJOR:-нет GPU})"
+fi
+[ -f "docker/Dockerfile.$CUDA_VARIANT" ] || { echo "ОШИБКА: нет docker/Dockerfile.$CUDA_VARIANT — задайте CUDA_VARIANT=cu128|cu130 явно"; exit 1; }
+CONTAINER="unsloth-studio-${CUDA_VARIANT}"
 
 # Защита от сборки «не того» варианта: если на машине уже крутится инстанс
 # другого CUDA-варианта — предупреждаем до начала долгой сборки.
