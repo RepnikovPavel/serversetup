@@ -24,7 +24,7 @@ huggingface.co.
 | Переменная | Дефолт | Зачем |
 |---|---|---|
 | `UNSLOTH_HOST_DIR` | `/mnt/data1/unsloth_default` | Куда на хосте складывать venv, кэши моделей и чекпоинты. **Берите быстрый NVMe** (на сервере без отдельного data-диска — каталог на системном NVMe, напр. `/home/user/unsloth_default`). |
-| `CUDA_VARIANT` | `cu128` | `cu128` = Ada (RTX 40xx), `cu130` = Blackwell (RTX 50xx). Должен быть Dockerfile.`$CUDA_VARIANT` в `docker/`. |
+| `CUDA_VARIANT` | авто (по GPU) | `cu128` = Ada (RTX 40xx), `cu130` = Blackwell (RTX 50xx). Без значения `setup.sh` сам выбирает по compute capability (`nvidia-smi`); при ручном `docker compose up` задавайте явно. Должен быть Dockerfile.`$CUDA_VARIANT` в `docker/`. |
 | `STUDIO_HOST_PORT` | `48218` | Порт Studio на хосте. У двух инстансов на одной машине — разные порты. |
 | `MODEL_REPO` / `QUANT` | `unsloth/Qwen3.8-27B-GGUF` / `UD-Q4_K_XL` | Какую модель качать. |
 | `UNSLOTH_LLAMA_CTX_SIZE` | `262144` | Контекст. На слабой GPU ставьте меньше (напр. 65536), иначе не влезет в VRAM. |

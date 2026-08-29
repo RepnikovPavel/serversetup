@@ -8,7 +8,8 @@
 #   UNSLOTH_HOST_DIR=/mnt/data1/unsloth_default USE_LOCAL_CA=1 HF_HUB_DISABLE_XET=1 bash setup.sh
 #
 # Полезные переменные (все необязательные):
-#   CUDA_VARIANT=cu128|cu130     — сборка под поколение GPU (cu130 = Blackwell/50xx)
+#   CUDA_VARIANT=cu128|cu130     — сборка под поколение GPU (cu130 = Blackwell/50xx);
+#                                  без значения — автодетект по compute capability GPU
 #   STUDIO_HOST_PORT=48218       — порт Studio на хосте (у двух инстансов — разный)
 #   MODEL_REPO / QUANT           — какую модель и квант качать
 #   UNSLOTH_LLAMA_CTX_SIZE       — контекст (262144 для 27B; на слабой GPU меньше)
@@ -24,7 +25,18 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 HOST_DIR="${UNSLOTH_HOST_DIR:-/mnt/data1/unsloth_default}"
-CUDA_VARIANT="${CUDA_VARIANT:-cu128}"
+# CUDA_VARIANT: явное значение всегда побеждает. Без него — автодетект по
+# compute capability GPU: Blackwell (sm_120+, RTX 50xx) → cu130, остальные → cu128.
+if [ -z "${CUDA_VARIANT:-}" ]; then
+    CC_MAJOR=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader 2>/dev/null | cut -d. -f1 | sort -rn | head -1 || true)
+    if [ -n "$CC_MAJOR" ] && [ "$CC_MAJOR" -ge 12 ]; then
+        CUDA_VARIANT=cu130
+    else
+        CUDA_VARIANT=cu128
+    fi
+    echo "CUDA_VARIANT не задан — автодетект по GPU: $CUDA_VARIANT (compute_cap major: ${CC_MAJOR:-нет GPU})"
+fi
+[ -f "docker/Dockerfile.$CUDA_VARIANT" ] || { echo "ОШИБКА: нет docker/Dockerfile.$CUDA_VARIANT — задайте CUDA_VARIANT=cu128|cu130 явно"; exit 1; }
 PORT="${STUDIO_HOST_PORT:-48218}"
 PASSWORD="${UNSLOTH_STUDIO_PASSWORD:-12345678}"
 HF_TOKEN="${HF_TOKEN:-}"
@@ -97,6 +109,11 @@ EOF
     echo "Готово. Запуск: opencode  (модель: $PROVIDER/$REPO — «$DISPLAY»; thinking-режим — variants off/low/medium/high/xhigh в выборе модели)"
     exit 0
 fi
+
+# Защита от сборки «не того» варианта: если на машине уже крутится инстанс
+# другого CUDA-варианта — предупреждаем до начала долгой сборки.
+OTHER=$(docker ps --format '{{.Names}}' 2>/dev/null | grep '^unsloth-studio-' | grep -v "^${CONTAINER}$" || true)
+[ -n "$OTHER" ] && echo "ВНИМАНИЕ: уже запущен $OTHER, а собирается $CONTAINER. Если это ошибка — Ctrl+C и задайте CUDA_VARIANT явно."
 
 echo "== 1/6 сертификаты =="
 [ "${USE_LOCAL_CA:-0}" = "1" ] && cp /usr/local/share/ca-certificates/*.crt docker/certs/ || echo "пропуск (USE_LOCAL_CA!=1)"
