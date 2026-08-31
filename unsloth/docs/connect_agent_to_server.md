@@ -67,6 +67,12 @@ bash setup.sh client 127.0.0.1 48218 "$(cat out/agent_api_key)" "$(cat out/model
 просто опустите последний аргумент.) Дальше `opencode`, модель в пикере —
 `server/…`. SSH-туннель (см. ниже) при этом не нужен.
 
+Внимание: `<DISPLAY_NAME>` — только подпись в UI. В флаг `-m` её подставлять
+нельзя (`UnknownError`): `-m` принимает ID в формате `провайдер/модель`
+(`server/unsloth/Qwen3.8-27B-GGUF`, список — `opencode models`). Работа через
+CLI (чат, агентные задачи, сессии и разрешения программно, headless HTTP API) —
+`opencodecli/README.md`.
+
 ## Thinking-режим (reasoning effort)
 
 Модель умеет переключать усилие размышлений **на лету, per-request** — сервер

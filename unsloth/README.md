@@ -114,12 +114,36 @@ UI: `http://<host>:48218`, логин `unsloth`, пароль из `UNSLOTH_STUD
 
 Подробности: `docs/serve_qwen38_27b_gguf.md`.
 
+## OpenCode CLI: чат, агенты, сессии, разрешения
+
+Кратко по юзкейсам CLI (полный туториал — `docs/opencodecli/README.md`):
+
+- **чаттинг**: `opencode run -m server/unsloth/Qwen3.8-27B-GGUF "вопрос"`
+  (`--variant off` выключает thinking, `--format json` — для скриптов,
+  `-f file` — приложить файл);
+- **агентные задачи**: тот же `run` в каталоге проекта — агент `build` сам
+  правит файлы и запускает команды; `--agent plan` — read-only; `--auto` —
+  без интерактивных вопросов (для CI);
+- **сессии программно**: `opencode session list/delete`, продолжение
+  `run -c` / `run -s <ID>` / `--fork`, экспорт `opencode export <ID>`;
+- **разрешения программно**: секция `permission` в `opencode.json`
+  (`allow`/`ask`/`deny` по инструментам и паттернам bash-команд,
+  `external_directory` запирает агента в проекте) + флаг `--auto`;
+- **headless**: `opencode serve --port 4096` поднимает HTTP API
+  (`POST /session`, `POST /session/<ID>/message`), TUI подключается через
+  `opencode attach`.
+
+Важно: `-m` принимает ID модели `provider/model` (см. `opencode models`),
+а не её отображаемое имя — иначе `UnknownError`.
+
 ## Дальше
 
 - `docs/serve_qwen38_27b_gguf.md` — кванты и сервинг руками
 - `docs/connect_agent_to_server.md` — OpenCode/Aider/Cline, SSH-туннель
 - `docs/vscode_autocomplete.md` — автодополнение в VSCode (почему не llama.vscode,
   mortar/Continue через `/v1/completions` с FIM-шаблоном)
+- `docs/opencodecli/README.md` — туториал по OpenCode CLI: чат, агентные
+  задачи, сессии и разрешения программно, headless HTTP API
 - `docs/free_gpu.md` — освободить GPU (`bash free_gpu.sh`)
 - `tests/` — `smoke.sh` (ручки и модель), `agents.sh` (реальные агенты),
   `bench_kv_switch.py` (цена переключения KV между пользователями)
